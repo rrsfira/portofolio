@@ -1,0 +1,178 @@
+:root {
+  --background: 5 5 5;
+  --foreground: 248 250 252;
+  --muted: 155 163 175;
+  --card: 16 16 16;
+  --border: 255 255 255;
+  --accent: 34 211 238;
+  --accent-glow: 34 211 238;
+}
+
+:root[data-theme="light"] {
+  --background: 241 245 249;
+  --foreground: 15 23 42;
+  --muted: 71 85 105;
+  --card: 255 255 255;
+  --border: 15 23 42;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 18% 8%, rgb(var(--accent) / 0.12), transparent 24rem),
+    radial-gradient(circle at 88% 26%, rgb(255 255 255 / 0.055), transparent 22rem),
+    #050505;
+  color: rgb(var(--foreground));
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+:root[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 18% 8%, rgb(var(--accent) / 0.16), transparent 24rem),
+    radial-gradient(circle at 88% 26%, rgb(15 23 42 / 0.05), transparent 22rem),
+    #f5f1ea;
+  color: rgb(var(--foreground));
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+:root[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgb(15 23 42 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(15 23 42 / 0.04) 1px, transparent 1px);
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.35);
+}
+
+.noise {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+:root[data-theme="light"] .noise {
+  opacity: 0.03;
+}
+
+.glass {
+  background: rgb(255 255 255 / 0.055);
+  border: 1px solid rgb(var(--border) / 0.1);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(22px);
+}
+
+:root[data-theme="light"] .glass {
+  background: rgb(255 255 255 / 0.74);
+  border-color: rgb(148 163 184 / 0.35);
+  box-shadow: 0 24px 80px rgb(15 23 42 / 0.08);
+}
+
+.section-shell {
+  width: min(1160px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.accent-gradient {
+  background: linear-gradient(135deg, rgb(var(--accent)), rgb(255 255 255));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: rgb(var(--accent));
+}
+
+:root[data-theme="light"] .text-white,
+:root[data-theme="light"] .text-white\/30,
+:root[data-theme="light"] .text-white\/54,
+:root[data-theme="light"] .text-white\/58,
+:root[data-theme="light"] .text-white\/62,
+:root[data-theme="light"] .text-white\/65,
+:root[data-theme="light"] .text-white\/68,
+:root[data-theme="light"] .text-white\/70,
+:root[data-theme="light"] .text-white\/75,
+:root[data-theme="light"] .text-white\/78,
+:root[data-theme="light"] .text-white\/86,
+:root[data-theme="light"] [class*="text-white/"] {
+  color: rgb(15 23 42) !important;
+}
+
+:root[data-theme="light"] .border-white\/10,
+:root[data-theme="light"] .border-white\/12,
+:root[data-theme="light"] .border-white\/14,
+:root[data-theme="light"] [class*="border-white/"] {
+  border-color: rgb(148 163 184 / 0.35) !important;
+}
+
+:root[data-theme="light"] .bg-black,
+:root[data-theme="light"] [class*="bg-black/"] {
+  background-color: rgb(255 255 255 / 0.72) !important;
+}
+
+:root[data-theme="light"] .bg-white\/5,
+:root[data-theme="light"] .bg-white\/10,
+:root[data-theme="light"] .bg-white\/18,
+:root[data-theme="light"] [class*="bg-white/"] {
+  background-color: rgb(255 255 255 / 0.78) !important;
+}
+
+:root[data-theme="light"] .bg-[#060d1a],
+:root[data-theme="light"] .bg-[#eef2f6]\/10 {
+  background-color: rgb(255 255 255) !important;
+}
+
+:root[data-theme="light"] input::placeholder,
+:root[data-theme="light"] textarea::placeholder {
+  color: rgb(71 85 105 / 0.75) !important;
+}
+
+:root[data-theme="light"] .shadow-\[0_0_0_1px_rgba\(255,255,255,0\.12\)\] {
+  box-shadow: 0 0 0 1px rgb(148 163 184 / 0.28) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
