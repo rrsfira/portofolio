@@ -61,9 +61,7 @@ export function Contact() {
         </h2>
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <a
-            href={`mailto:${profile.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`mailto:${profile.email}?subject=Project%20Inquiry%20-%20Reihan%20Rachma%20Shafira`}
             className="focus-ring group inline-flex items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-black shadow-[0_0_55px_rgb(var(--accent)/0.26)] transition hover:scale-[1.02]"
           >
             <Mail className="h-4 w-4" />

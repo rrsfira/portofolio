@@ -30,7 +30,7 @@ export function ThemeSwitcher({
 
   return (
     <div
-      className={`fixed bottom-3 right-3 z-50 flex max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-end gap-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-xl transition sm:bottom-5 sm:right-5 sm:gap-2 sm:rounded-full sm:px-3 ${
+      className={`fixed bottom-3 right-3 z-50 flex max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-end gap-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-xl transition sm:bottom-5 sm:right-5 sm:flex-col sm:gap-2 sm:rounded-3xl sm:px-2 sm:py-3 ${
         isDark
           ? "border-white/10 bg-black/55 text-white"
           : "border-slate-200/80 bg-white/80 text-slate-800"
@@ -52,12 +52,12 @@ export function ThemeSwitcher({
       </button>
 
       <div
-        className={`hidden h-5 w-px sm:block ${isDark ? "bg-white/10" : "bg-slate-200"}`}
+        className={`hidden h-px w-5 sm:block ${isDark ? "bg-white/10" : "bg-slate-200"}`}
         aria-hidden="true"
       />
 
       <Palette className="hidden h-4 w-4 text-accent sm:block" aria-hidden="true" />
-      <div className="flex gap-0 sm:gap-1" role="radiogroup" aria-label="Theme accent color">
+      <div className="flex gap-0 sm:flex-col sm:gap-1" role="radiogroup" aria-label="Theme accent color">
         {themes.map((theme) => (
           <button
             key={theme.name}

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
 import { ProfileCard } from "@/components/ProfileCard";
 import { profile } from "@/lib/data";
@@ -29,19 +29,20 @@ export function Hero() {
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <a
+            href="/CV%20Shafira%20TERBARU%202026.pdf"
+            download="CV Shafira TERBARU 2026.pdf"
+            className="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/60 px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-accent/55 hover:text-accent"
+          >
+            <Download className="h-4 w-4" />
+            Download Resume
+          </a>
+          <a
+          
             href="#projects"
             className="focus-ring group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-black shadow-[0_0_45px_rgb(var(--accent)/0.28)] transition hover:scale-[1.02]"
           >
             View Projects
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-          </a>
-
-          <a
-            href="#contact"
-            className="focus-ring inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/60 px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-accent/55 hover:text-accent"
-          >
-            <Mail className="h-4 w-4" />
-            Contact Me
           </a>
         </div>
 
