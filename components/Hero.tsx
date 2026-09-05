@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="section-shell grid min-h-0 items-center gap-6 pb-16 pt-28 sm:min-h-screen sm:gap-10 sm:pt-20 lg:grid-cols-[0.95fr_1.05fr]"
+      className="section-shell grid min-h-0 items-center gap-2 pb-16 pt-28 sm:min-h-screen sm:gap-10 sm:pt-20 lg:grid-cols-[0.95fr_1.05fr]"
     >
       <motion.div
         initial={{ opacity: 0, y: 34 }}
@@ -45,10 +45,10 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-14 h-12 w-12" aria-hidden="true" />
+        <div className="hidden h-12 w-12 sm:mt-14 sm:block" aria-hidden="true" />
       </motion.div>
 
-      <div className="lg:translate-x-[60px] lg:-translate-y-[70px]">
+      <div className="-mt-8 lg:translate-x-[60px] lg:-translate-y-[70px] sm:mt-0">
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
