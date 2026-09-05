@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="section-shell grid min-h-0 items-center gap-2 pb-16 pt-28 sm:min-h-screen sm:gap-10 sm:pt-20 lg:grid-cols-[0.95fr_1.05fr]"
+      className="section-shell flex min-h-0 flex-col gap-2 pb-16 pt-28 sm:min-h-screen sm:gap-10 sm:pt-20 lg:grid lg:grid-cols-[0.95fr_1.05fr]"
     >
       <motion.div
         initial={{ opacity: 0, y: 34 }}
