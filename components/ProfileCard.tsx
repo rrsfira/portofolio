@@ -240,7 +240,7 @@ export function ProfileCard() {
       className="
         relative
         mx-auto
-        h-[570px]
+        h-[540px]
         w-full
         max-w-[330px]
         touch-none

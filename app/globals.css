@@ -29,9 +29,10 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 18% 8%, rgb(var(--accent) / 0.12), transparent 24rem),
-    radial-gradient(circle at 88% 26%, rgb(255 255 255 / 0.055), transparent 22rem),
-    #050505;
+    radial-gradient(ellipse at 12% 12%, rgb(var(--accent) / 0.2), transparent 30%),
+    radial-gradient(ellipse at 88% 18%, rgb(87 70 211 / 0.17), transparent 28%),
+    radial-gradient(ellipse at 50% 78%, rgb(190 44 151 / 0.1), transparent 34%),
+    radial-gradient(circle at 50% 50%, #10152b 0%, #070916 44%, #03040a 100%);
   color: rgb(var(--foreground));
   font-family: var(--font-inter), Inter, ui-sans-serif, system-ui;
   transition: background 0.25s ease, color 0.25s ease;
@@ -58,11 +59,46 @@ body::before {
   mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
 
+body::after {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.78;
+  background-image:
+    radial-gradient(circle at 8% 22%, rgb(255 255 255 / 0.85) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 19% 72%, rgb(255 255 255 / 0.62) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 31% 15%, rgb(255 255 255 / 0.72) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 43% 58%, rgb(255 255 255 / 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 57% 25%, rgb(255 255 255 / 0.78) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 68% 82%, rgb(255 255 255 / 0.58) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 79% 43%, rgb(255 255 255 / 0.76) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 93% 68%, rgb(255 255 255 / 0.64) 0 1px, transparent 1.5px),
+    radial-gradient(ellipse at 50% 42%, transparent 0 22%, rgb(62 91 188 / 0.09) 42%, transparent 67%);
+  background-size: 260px 260px, 310px 310px, 380px 380px, 430px 430px, 290px 290px, 340px 340px, 410px 410px, 330px 330px, 100% 100%;
+  animation: galaxy-drift 28s ease-in-out infinite alternate;
+}
+
 :root[data-theme="light"] body::before {
   background-image:
     linear-gradient(rgb(15 23 42 / 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgb(15 23 42 / 0.04) 1px, transparent 1px);
 }
+
+  :root[data-theme="light"] body::after {
+    display: none;
+  }
+
+  @keyframes galaxy-drift {
+    from {
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+
+    to {
+      transform: scale(1.06) translate3d(-1%, 1%, 0);
+    }
+  }
 
 ::selection {
   background: rgb(var(--accent) / 0.35);
@@ -95,8 +131,14 @@ body::before {
 }
 
 .section-shell {
-  width: min(1160px, calc(100% - 32px));
+  width: min(1160px, calc(100% - 24px));
   margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    width: min(1160px, calc(100% - 48px));
+  }
 }
 
 .accent-gradient {

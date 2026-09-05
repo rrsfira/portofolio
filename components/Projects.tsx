@@ -11,7 +11,6 @@ export function Projects() {
       <SectionTitle
         eyebrow="Projects"
         title="Selected work with a visual-first presentation."
-        copy="Dummy case studies are included so you can swap copy, links, and imagery later without touching the layout system."
       />
       <div className="grid gap-5 lg:grid-cols-12">
         {projects.map((project, index) => (

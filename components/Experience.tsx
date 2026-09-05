@@ -15,7 +15,7 @@ export function Experience() {
 
   return (
     <section id="experience" className="section-shell py-24">
-      <SectionTitle eyebrow="Experience" title="A timeline of product-minded work." />
+      <SectionTitle eyebrow="Experience" title="Experience that shaped how I build." />
       <div ref={ref} className="relative">
         <div className="absolute left-3 top-0 h-full w-px bg-white/10 md:left-1/2" aria-hidden="true" />
         <motion.div

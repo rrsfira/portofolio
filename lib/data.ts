@@ -51,9 +51,9 @@ export const projects = [
     description: "A cinematic portfolio system for a distributed creative team.",
     tech: ["React.js", "Node.js", "MySQL"],
     image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1200&q=80",
+      "",
     live: "#",
-    source: "#"
+    source: "https://github.com/rrsfira/TokoKesehatan2.git"
   },
   {
     name: "Point of Sale (POS)",
@@ -61,51 +61,51 @@ export const projects = [
     description: "Operational dashboard with dense data, calm states, and fast filters.",
     tech: ["React.js", "Tailwind CSS", "Figma"],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+      "OK.png",
     live: "#",
-    source: "#"
+    source: "https://github.com/rrsfira/POS-INTERN.git"
   },
   {
     name: "Siaga Surabaya",
     year: "2025",
     description: "Premium storefront concept with editorial product storytelling.",
-    tech: ["React.js", "Node.js", "MySQL", "Pentaho Data Integration", "Charts"],
+    tech: ["React.js", "Node.js", "MySQL", "Pentaho Data Integration", "Charts.js"],
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "BPBD.png",
     live: "#",
-    source: "#"
+    source: "https://github.com/rrsfira/Manajemen-Sosialisasi.git"
   },
   {
     name: "SIMPEG",
     year: "2026",
     description: "Premium storefront concept with editorial product storytelling.",
-    tech: ["Next.js", "Tailwind", "Stripe"],
+    tech: ["React.js", "Tailwind", "Figma", "Charts.js"],
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
+      "",
     live: "#",
-    source: "#"
+    source: "https://github.com/rrsfira/skripsi.git"
   }
 ];
 
 
 export const experiences = [
   {
+    year: "September - Desember 2024",
+    title: "Front-End Web Developer",
+    organization: "PT OTAK KANAN",
+    description: "Developing a Point of Sales (POS) system, including product management, sales transactions, sales reports, and optimizing the interface for better usability."
+  },
+  {
+    year: "Maret - Juni 2025",
+    title: "Full-Stack Web Developer",
+    organization: "BPBD Kota Surabaya",
+    description: "Developing a data management website for disaster awareness and outreach, covering everything from interface development and system testing to implementation and deployment."
+  },
+  {
     year: "2026",
-    title: "Independent Creative Developer",
-    organization: "Remote",
-    description: "Designing and building interactive websites, product prototypes, and design systems."
-  },
-  {
-    year: "2024",
-    title: "Front-End Engineer",
-    organization: "Pixel Foundry",
-    description: "Led motion-rich UI implementation for SaaS dashboards and launch websites."
-  },
-  {
-    year: "2022",
-    title: "UI Designer",
-    organization: "Studio North",
-    description: "Created visual systems, wireframes, and high-fidelity web experiences for early-stage brands."
+    title: "Front-End Web Developer",
+    organization: "Thesis Project",
+    description: "Reengineering and developed the frontend of an employee management system using React.js, featuring modules for attendance, payroll, leave and time off, reimbursements, and job applicant management."
   }
 ];
 

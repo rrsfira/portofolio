@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 import { ProfileCard } from "@/components/ProfileCard";
 import { profile } from "@/lib/data";
@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="section-shell grid min-h-screen items-center gap-10 pt-16 lg:grid-cols-[0.95fr_1.05fr]"
+      className="section-shell grid min-h-0 items-center gap-6 pb-16 pt-28 sm:min-h-screen sm:gap-10 sm:pt-20 lg:grid-cols-[0.95fr_1.05fr]"
     >
       <motion.div
         initial={{ opacity: 0, y: 34 }}
@@ -48,18 +48,20 @@ export function Hero() {
         <div className="mt-14 h-12 w-12" aria-hidden="true" />
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, scale: 0.92, x: 0, y: 30 }}
-        animate={{ opacity: 1, scale: 1, x: 60, y: -70 }}
-        transition={{
-          type: "spring",
-          stiffness: 90,
-          damping: 17,
-          delay: 0.18,
-        }}
-      >
-        <ProfileCard />
-      </motion.div>
+      <div className="lg:translate-x-[60px] lg:-translate-y-[70px]">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 90,
+            damping: 17,
+            delay: 0.18,
+          }}
+        >
+          <ProfileCard />
+        </motion.div>
+      </div>
     </section>
   );
 }
