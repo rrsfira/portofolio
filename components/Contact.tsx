@@ -45,7 +45,7 @@ export function Contact() {
     : "border border-white/10 bg-[#060d1a] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]";
 
   return (
-    <section id="contact" className="section-shell py-16 pb-20">
+    <section id="contact" className="section-shell py-12 pb-16 sm:py-16 sm:pb-20 lg:py-20 lg:pb-24">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

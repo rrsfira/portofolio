@@ -36,8 +36,8 @@ const principles = [
 
 export function About() {
   return (
-    <section id="about" className="section-shell py-24 md:py-32">
-      <div className="grid items-center gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+    <section id="about" className="section-shell py-16 sm:py-20 lg:py-28">
+      <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

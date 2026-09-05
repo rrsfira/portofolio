@@ -6,7 +6,7 @@ import { skills } from "@/lib/data";
 
 export function Skills() {
   return (
-    <section id="skills" className="section-shell py-24">
+    <section id="skills" className="section-shell py-16 sm:py-20 lg:py-24">
       <SectionTitle
         eyebrow="Skills"
         title="A versatile toolkit for building modern digital experiences."

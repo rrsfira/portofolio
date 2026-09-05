@@ -7,7 +7,7 @@ import { projects } from "@/lib/data";
 
 export function Projects() {
   return (
-    <section id="projects" className="section-shell py-24">
+    <section id="projects" className="section-shell py-16 sm:py-20 lg:py-24">
       <SectionTitle
         eyebrow="Projects"
         title="Selected work with a visual-first presentation."
