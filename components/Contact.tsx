@@ -7,6 +7,11 @@ import { profile, socials } from "@/lib/data";
 
 export function Contact() {
   const [isLightTheme, setIsLightTheme] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
 
   useEffect(() => {
     const syncTheme = () => {
@@ -44,6 +49,24 @@ export function Contact() {
     ? "border border-slate-300 bg-white text-slate-900 shadow-[0_0_0_1px_rgba(148,163,184,0.18)]"
     : "border border-white/10 bg-[#060d1a] text-white shadow-[0_0_0_1px_rgba(255,255,255,0.12)]";
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      "Message:",
+      formData.message
+    ].join("\n");
+
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      profile.email
+    )}&body=${encodeURIComponent(body)}`;
+
+    window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <section id="contact" className="section-shell py-12 pb-16 sm:py-16 sm:pb-20 lg:py-20 lg:pb-24">
       <motion.div
@@ -61,7 +84,9 @@ export function Contact() {
         </h2>
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <a
-            href={`mailto:${profile.email}?subject=Project%20Inquiry%20-%20Reihan%20Rachma%20Shafira`}
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.email)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="focus-ring group inline-flex items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-black shadow-[0_0_55px_rgb(var(--accent)/0.26)] transition hover:scale-[1.02]"
           >
             <Mail className="h-4 w-4" />
@@ -85,7 +110,7 @@ export function Contact() {
           })}
         </div>
 
-        <form className="mt-8 space-y-5">
+        <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
           <div>
             <label
               htmlFor="name"
@@ -96,6 +121,9 @@ export function Contact() {
             <input
               id="name"
               type="text"
+              value={formData.name}
+              onChange={(event) => setFormData((current) => ({ ...current, name: event.target.value }))}
+              required
               className={`h-12 w-full rounded-[12px] border px-4 text-sm outline-none transition ${fieldClass}`}
             />
           </div>
@@ -110,6 +138,9 @@ export function Contact() {
             <input
               id="email"
               type="email"
+              value={formData.email}
+              onChange={(event) => setFormData((current) => ({ ...current, email: event.target.value }))}
+              required
               className={`h-12 w-full rounded-[12px] border px-4 text-sm outline-none transition ${fieldClass}`}
             />
           </div>
@@ -124,6 +155,9 @@ export function Contact() {
             <textarea
               id="message"
               rows={4}
+              value={formData.message}
+              onChange={(event) => setFormData((current) => ({ ...current, message: event.target.value }))}
+              required
               className={`w-full rounded-[12px] border px-4 py-3 text-sm outline-none transition ${fieldClass}`}
             />
           </div>
