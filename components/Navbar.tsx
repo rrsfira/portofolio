@@ -56,7 +56,7 @@ export function Navbar() {
   return (
     <motion.header
       style={{ backgroundColor: background, borderColor: border }}
-      className={`fixed left-1/2 top-4 z-40 w-[min(1120px,calc(100%-24px))] -translate-x-1/2 rounded-full border px-4 py-3 backdrop-blur-xl transition ${shellClass}`}
+      className={`fixed left-1/2 top-4 z-40 w-[min(1120px,calc(100%-24px))] -translate-x-1/2 rounded-3xl border px-4 py-3 backdrop-blur-xl transition md:rounded-full ${shellClass}`}
     >
       <nav className="flex items-center justify-between gap-4" aria-label="Primary navigation">
         <a href="#home" className={`focus-ring rounded-full text-sm font-semibold ${isLightTheme ? "text-slate-900" : "text-white"}`}>

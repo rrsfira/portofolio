@@ -240,7 +240,7 @@ export function ProfileCard() {
       className="
         relative
         mx-auto
-        h-[540px]
+        h-[390px]
         w-full
         max-w-[330px]
         touch-none
@@ -280,10 +280,12 @@ export function ProfileCard() {
   left-1/2
   top-0
   z-20
-  h-[600px]
+          hidden
+          h-[600px]
   w-full
   -translate-x-1/2
   overflow-visible
+          sm:block
 "
           aria-hidden="true"
         >
@@ -433,10 +435,11 @@ export function ProfileCard() {
           className="
     absolute
     left-0
-    top-[150px]
+            top-0
     z-10
     w-full
     select-none
+            sm:top-[150px]
   "
           style={{
             x: dragX,
