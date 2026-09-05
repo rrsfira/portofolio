@@ -15,7 +15,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 34 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-2xl"
+        className="order-2 max-w-2xl lg:order-1"
       >
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
           Hello, I&apos;m
@@ -48,7 +48,7 @@ export function Hero() {
         <div className="hidden h-12 w-12 sm:mt-14 sm:block" aria-hidden="true" />
       </motion.div>
 
-      <div className="-mt-8 lg:translate-x-[60px] lg:-translate-y-[70px] sm:mt-0">
+      <div className="order-1 lg:order-2 lg:translate-x-[60px] lg:-translate-y-[70px]">
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
