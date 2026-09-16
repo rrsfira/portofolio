@@ -50,14 +50,14 @@ export function ThemeSwitcher({
 
       {isOpen && (
         <div
-          className={`flex max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-end gap-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-xl transition sm:flex-col sm:gap-2 sm:rounded-3xl sm:px-2 sm:py-3 ${surfaceClass}`}
+          className={`relative flex w-[min(22rem,calc(100vw-1.5rem))] items-center justify-between gap-1 rounded-2xl border px-2 py-2 pr-10 shadow-2xl backdrop-blur-xl transition sm:w-auto sm:flex-col sm:gap-2 sm:rounded-3xl sm:px-2 sm:py-3 sm:pr-2 ${surfaceClass}`}
         >
-          <div className="flex w-full items-center justify-between sm:w-auto">
+          <div className="absolute right-2 top-2 flex items-center justify-between sm:static sm:w-auto">
             <Palette className="ml-1 hidden h-4 w-4 text-accent sm:block" aria-hidden="true" />
             <button
               type="button"
               onClick={() => setIsOpen(false)}
-              className="ml-auto grid h-7 w-7 place-items-center rounded-full transition hover:bg-white/10"
+              className="grid h-7 w-7 place-items-center rounded-full transition hover:bg-white/10"
               aria-label="Close theme settings"
               title="Close theme settings"
             >

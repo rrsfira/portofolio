@@ -48,7 +48,7 @@ export function Hero() {
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
           Hello, I&apos;m
         </p>
-        <h1 className="min-h-[2.4em] text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:min-h-[2.16em] sm:text-5xl lg:min-h-[2.16em] lg:text-6xl">
+        <h1 className="min-h-[2.4em] max-w-full break-words text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:min-h-[2.16em] sm:text-5xl lg:min-h-[2.16em] lg:text-6xl">
           {displayedName}
           <span className="ml-1 inline-block h-[0.9em] w-[3px] animate-pulse bg-accent align-[-0.08em]" aria-hidden="true" />
         </h1>
