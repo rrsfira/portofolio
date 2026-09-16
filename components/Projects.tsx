@@ -24,13 +24,13 @@ export function Projects() {
               index === 0 ? "lg:col-span-7" : "lg:col-span-5"
             }`}
           >
-            <div className="relative aspect-[16/10] overflow-hidden bg-white/5">
+            <div className="relative aspect-[16/10] overflow-hidden bg-white/5 p-2 sm:p-3">
               <img
                 src={project.image}
                 alt={`${project.name} project preview`}
-                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                className="h-full w-full object-contain transition duration-700 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-transparent" />
               <p className="absolute right-4 top-4 rounded-full border border-white/12 bg-black/45 px-3 py-1 text-xs text-white/70 backdrop-blur-md">
                 {project.year}
               </p>

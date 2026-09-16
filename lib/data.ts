@@ -16,7 +16,7 @@ import {
 
 export const profile = {
   name: "Reihan Rachma Shafira",
-  role: "Fullstack Developer",
+  role: "IT Developer",
   location: "Surabaya, ID",
   email: "reihanrachmashafira@gmail.com",
   bio:
@@ -26,22 +26,26 @@ export const profile = {
 };
 
 export const skills = [
-  { name: "React.js", icon: Code2 },
-  { name: "Next.js", icon: Globe2 },
-  { name: "Tailwind", icon: Palette },
   { name: "HTML & CSS", icon: Code2 },
   { name: "JavaScript", icon: Code2 },
-  { name: "Node.js", icon: Server },
+  { name: "TypeScript", icon: Code2 },
   { name: "PHP", icon: Code2 },
   { name: "Laravel", icon: Code2 },
   { name: "Python", icon: Code2 },
-  { name: "Figma", icon: Figma },
+  { name: "Tailwind", icon: Palette },
+  { name: "React.js", icon: Code2 },
+  { name: "Next.js", icon: Globe2 },
+  { name: "Node.js", icon: Server },
+  { name: "SQL", icon: Database },
   { name: "REST API", icon: Globe2 },
   { name: "Postman", icon: Send },
-  { name: "MySQL", icon: Database },
+  { name: "Figma", icon: Figma },
   { name: "Git", icon: GitBranch },
   { name: "GitHub", icon: Github },
   { name: "UML", icon: Workflow },
+  { name: "DBeaver", icon: Database },
+  { name: "Pentaho Data Integration", icon: Layers3 },
+  { name: "Cisco Packet Tracer", icon: CodeXml },
 ];
 
 export const projects = [
@@ -50,8 +54,7 @@ export const projects = [
     year: "2024",
     description: "A cinematic portfolio system for a distributed creative team.",
     tech: ["React.js", "Node.js", "MySQL"],
-    image:
-      "",
+    image: "/TOKO.png",
     live: "#",
     source: "https://github.com/rrsfira/TokoKesehatan2.git"
   },
@@ -60,8 +63,7 @@ export const projects = [
     year: "2024",
     description: "Operational dashboard with dense data, calm states, and fast filters.",
     tech: ["React.js", "Tailwind CSS", "Figma"],
-    image:
-      "OK.png",
+    image: "/OK.png",
     live: "#",
     source: "https://github.com/rrsfira/POS-INTERN.git"
   },
@@ -70,8 +72,7 @@ export const projects = [
     year: "2025",
     description: "Premium storefront concept with editorial product storytelling.",
     tech: ["React.js", "Node.js", "MySQL", "Pentaho Data Integration", "Charts.js"],
-    image:
-      "BPBD.png",
+    image: "/BPBD.png",
     live: "#",
     source: "https://github.com/rrsfira/Manajemen-Sosialisasi.git"
   },
@@ -80,8 +81,7 @@ export const projects = [
     year: "2026",
     description: "Premium storefront concept with editorial product storytelling.",
     tech: ["React.js", "Tailwind", "Figma", "Charts.js"],
-    image:
-      "",
+    image: "/SIMPEG.png",
     live: "#",
     source: "https://github.com/rrsfira/skripsi.git"
   }

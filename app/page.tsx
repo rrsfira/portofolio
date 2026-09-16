@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
+import { Certifications } from "@/components/Certifications";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Experience } from "@/components/Experience";
 import { Hero } from "@/components/Hero";
@@ -38,6 +39,7 @@ export default function Home() {
       <Skills />
       <Projects />
       <Experience />
+      <Certifications />
       <Contact />
     </main>
   );

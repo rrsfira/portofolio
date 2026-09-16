@@ -1,6 +1,7 @@
 "use client";
 
-import { Moon, Palette, Sun } from "lucide-react";
+import { useState } from "react";
+import { Moon, Palette, Sun, X } from "lucide-react";
 
 export const themes = [
   { name: "Cyan", rgb: "34 211 238", swatch: "#22d3ee" },
@@ -27,15 +28,43 @@ export function ThemeSwitcher({
   onModeChange: (mode: ThemeMode) => void;
 }) {
   const isDark = mode === "dark";
+  const [isOpen, setIsOpen] = useState(false);
+
+  const surfaceClass = isDark
+    ? "border-white/10 bg-black/55 text-white"
+    : "border-slate-200/80 bg-white/80 text-slate-800";
 
   return (
-    <div
-      className={`fixed bottom-3 right-3 z-50 flex max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-end gap-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-xl transition sm:bottom-5 sm:right-5 sm:flex-col sm:gap-2 sm:rounded-3xl sm:px-2 sm:py-3 ${
-        isDark
-          ? "border-white/10 bg-black/55 text-white"
-          : "border-slate-200/80 bg-white/80 text-slate-800"
-      }`}
-    >
+    <div className="fixed bottom-3 right-3 z-50 sm:bottom-5 sm:right-5">
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className={`grid h-11 w-11 place-items-center rounded-full border shadow-2xl backdrop-blur-xl transition hover:scale-105 ${surfaceClass}`}
+          aria-label="Open theme settings"
+          title="Open theme settings"
+        >
+          <Palette className="h-4 w-4 text-accent" />
+        </button>
+      )}
+
+      {isOpen && (
+        <div
+          className={`flex max-w-[calc(100vw-1.5rem)] flex-wrap items-center justify-end gap-1 rounded-2xl border px-2 py-2 shadow-2xl backdrop-blur-xl transition sm:flex-col sm:gap-2 sm:rounded-3xl sm:px-2 sm:py-3 ${surfaceClass}`}
+        >
+          <div className="flex w-full items-center justify-between sm:w-auto">
+            <Palette className="ml-1 hidden h-4 w-4 text-accent sm:block" aria-hidden="true" />
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="ml-auto grid h-7 w-7 place-items-center rounded-full transition hover:bg-white/10"
+              aria-label="Close theme settings"
+              title="Close theme settings"
+            >
+              <X className="h-3.5 w-3.5" />
+            </button>
+          </div>
+
       <button
         type="button"
         onClick={() => onModeChange(isDark ? "light" : "dark")}
@@ -56,7 +85,6 @@ export function ThemeSwitcher({
         aria-hidden="true"
       />
 
-      <Palette className="hidden h-4 w-4 text-accent sm:block" aria-hidden="true" />
       <div className="flex gap-0 sm:flex-col sm:gap-1" role="radiogroup" aria-label="Theme accent color">
         {themes.map((theme) => (
           <button
@@ -82,6 +110,8 @@ export function ThemeSwitcher({
           </button>
         ))}
       </div>
+        </div>
+      )}
     </div>
   );
 }

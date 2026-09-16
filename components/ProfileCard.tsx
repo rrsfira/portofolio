@@ -245,6 +245,7 @@ export function ProfileCard() {
         max-w-[330px]
         touch-none
         sm:h-[620px]
+        lg:h-[470px]
       "
       data-cursor="card"
     >

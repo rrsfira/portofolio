@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/data";
 
-const links = ["About", "Skills", "Projects", "Experience", "Contact"];
+const links = ["About", "Skills", "Projects", "Experience", "Certifications"];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -60,7 +60,7 @@ export function Navbar() {
     >
       <nav className="flex items-center justify-between gap-4" aria-label="Primary navigation">
         <a href="#home" className={`focus-ring rounded-full text-sm font-semibold ${isLightTheme ? "text-slate-900" : "text-white"}`}>
-          {profile.name.split(" ")[0]}<span className="text-accent">.</span>
+          {profile.name.split(" ").slice(-1)[0]}<span className="text-accent">.</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">

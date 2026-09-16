@@ -2,14 +2,42 @@
 
 import { ArrowRight, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { ProfileCard } from "@/components/ProfileCard";
 import { profile } from "@/lib/data";
 
 export function Hero() {
+  const [displayedName, setDisplayedName] = useState("");
+
+  useEffect(() => {
+    let characterIndex = 0;
+    let isDeleting = false;
+
+    const typewriter = window.setInterval(() => {
+      if (!isDeleting) {
+        characterIndex += 1;
+        setDisplayedName(profile.name.slice(0, characterIndex));
+
+        if (characterIndex === profile.name.length) {
+          isDeleting = true;
+        }
+      } else {
+        characterIndex -= 1;
+        setDisplayedName(profile.name.slice(0, characterIndex));
+
+        if (characterIndex === 0) {
+          isDeleting = false;
+        }
+      }
+    }, isDeleting ? 70 : 130);
+
+    return () => window.clearInterval(typewriter);
+  }, []);
+
   return (
     <section
       id="home"
-      className="section-shell flex min-h-0 flex-col gap-2 pb-10 pt-24 sm:min-h-screen sm:gap-8 sm:pb-14 sm:pt-24 md:gap-10 md:pb-16 md:pt-28 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:pt-32"
+      className="section-shell flex min-h-0 flex-col gap-2 pb-10 pt-24 sm:min-h-[calc(100vh-7rem)] sm:gap-8 sm:pb-14 sm:pt-24 md:gap-10 md:pb-16 md:pt-28 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:pt-32"
     >
       <motion.div
         initial={{ opacity: 0, y: 34 }}
@@ -20,8 +48,9 @@ export function Hero() {
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
           Hello, I&apos;m
         </p>
-        <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          {profile.name}
+        <h1 className="min-h-[2.4em] text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:min-h-[2.16em] sm:text-5xl lg:min-h-[2.16em] lg:text-6xl">
+          {displayedName}
+          <span className="ml-1 inline-block h-[0.9em] w-[3px] animate-pulse bg-accent align-[-0.08em]" aria-hidden="true" />
         </h1>
         <p className="mt-4 text-base text-white/78 sm:text-lg">{profile.role}</p>
         <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base">
@@ -49,7 +78,7 @@ export function Hero() {
         <div className="hidden h-12 w-12 sm:mt-14 sm:block" aria-hidden="true" />
       </motion.div>
 
-      <div className="order-1 lg:order-2 lg:translate-x-[60px] lg:-translate-y-[110px]">
+      <div className="order-1 lg:order-2 lg:translate-x-[60px] lg:-translate-y-[140px]">
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
