@@ -16,7 +16,7 @@ import {
 
 export const profile = {
   name: "Reihan Rachma Shafira",
-  role: "IT Developer",
+  role: "Fullstack Developer",
   location: "Surabaya, ID",
   email: "reihanrachmashafira@gmail.com",
   bio:
