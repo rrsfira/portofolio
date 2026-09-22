@@ -168,6 +168,244 @@ body::after {
   outline-color: rgb(var(--accent));
 }
 
+.skill-keyboard {
+  margin-top: 0;
+  padding: 0 clamp(0.5rem, 3vw, 2rem);
+  overflow: hidden;
+}
+
+.skill-keyboard__hint {
+  margin: -1.5rem 0 1.75rem;
+  text-align: center;
+  color: rgb(var(--muted) / 0.9);
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+
+.skill-keyboard__deck {
+  display: grid;
+  gap: clamp(0.45rem, 1.2vw, 0.8rem);
+  max-width: 58rem;
+  margin-inline: auto;
+  padding: clamp(0.7rem, 2vw, 1.25rem);
+  perspective: 1100px;
+}
+
+.skill-keyboard__row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: inherit;
+  transform: rotateX(10deg) rotateZ(-2deg);
+}
+
+.skill-keyboard__row--1 {
+  margin-inline: 8%;
+}
+
+.skill-keyboard__row--2 {
+  margin-inline: 2%;
+  transform: translateX(-1.5%) rotateX(3deg) rotateZ(-2deg);
+}
+
+.skill-keyboard__row--3 {
+  margin-inline: 0;
+  transform: translateX(2%) rotateX(3deg) rotateZ(-2deg);
+}
+
+.skill-keyboard__row--4 {
+  margin-inline: 7%;
+  transform: translateX(-1%) rotateX(3deg) rotateZ(-2deg);
+}
+
+.skill-keyboard__row--5 {
+  margin-inline: 22%;
+  transform: translateX(3%) rotateX(3deg) rotateZ(-2deg);
+}
+
+.skill-key {
+  position: relative;
+  min-width: 0;
+  min-height: clamp(4.9rem, 9vw, 6.7rem);
+  padding: 0;
+  border: 0;
+  border-radius: 0.82rem;
+  color: rgb(var(--foreground));
+  cursor: pointer;
+  isolation: isolate;
+  transform: translateY(0);
+  transition: filter 180ms ease, transform 180ms ease;
+}
+
+.skill-key::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0.5rem -0.05rem -0.5rem;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--key-accent) 45%, #070a11);
+  box-shadow: 0 0.6rem 0.8rem rgb(0 0 0 / 0.5);
+}
+
+.skill-key__surface {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: inherit;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  overflow: hidden;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: inherit;
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.3), transparent 36%),
+    linear-gradient(180deg, color-mix(in srgb, var(--key-accent) 78%, #243047), color-mix(in srgb, var(--key-accent) 48%, #0f131c));
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.24), inset 0 -0.42rem rgb(0 0 0 / 0.22), 0 0.18rem 0 rgb(0 0 0 / 0.72);
+  transform: rotate(var(--key-tilt, 0deg));
+  transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.skill-key:nth-child(2n) .skill-key__surface { --key-tilt: 3deg; }
+.skill-key:nth-child(3n) .skill-key__surface { --key-tilt: -4deg; }
+.skill-key:nth-child(5n) .skill-key__surface { --key-tilt: 6deg; }
+
+.skill-key__surface::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--key-accent), transparent);
+  opacity: 0.75;
+}
+
+.skill-key__icon {
+  width: clamp(1.65rem, 4vw, 2.25rem);
+  height: clamp(1.65rem, 4vw, 2.25rem);
+  color: rgb(255 255 255 / 0.94);
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.32));
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.skill-key__label {
+  max-width: 100%;
+  padding-inline: 0.35rem;
+  overflow: hidden;
+  color: white;
+  font-size: clamp(0.58rem, 1.15vw, 0.7rem);
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.skill-key:hover {
+  filter: brightness(1.1);
+}
+
+.skill-key:hover .skill-key__surface {
+  border-color: color-mix(in srgb, var(--key-accent) 58%, white 12%);
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.17), transparent 35%),
+    linear-gradient(180deg, color-mix(in srgb, var(--key-accent) 72%, #1f2635), color-mix(in srgb, var(--key-accent) 34%, #101520));
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.2), 0 0 1.4rem color-mix(in srgb, var(--key-accent) 18%, transparent), 0 0.2rem 0 rgb(0 0 0 / 0.7);
+}
+
+.skill-key:hover .skill-key__label,
+.skill-key:focus-visible .skill-key__label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skill-key:hover .skill-key__icon {
+  transform: translateY(-2px) scale(1.06);
+}
+
+.skill-key:active .skill-key__surface {
+  box-shadow: inset 0 0.25rem 0.45rem rgb(0 0 0 / 0.35), 0 0 0 rgb(0 0 0 / 0.4);
+}
+
+.skill-keyboard__status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.25rem;
+  color: rgb(var(--muted) / 0.7);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.skill-keyboard__status-dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: rgb(var(--accent));
+  box-shadow: 0 0 0.7rem rgb(var(--accent) / 0.7);
+}
+
+.skill-keyboard__status-line {
+  width: 2rem;
+  height: 1px;
+  margin-inline: 0.3rem;
+  background: rgb(var(--muted) / 0.35);
+}
+
+:root[data-theme="light"] .skill-key::after {
+  background: color-mix(in srgb, var(--key-accent) 20%, #94a3b8);
+  box-shadow: 0 0.4rem 0.6rem rgb(15 23 42 / 0.18);
+}
+
+:root[data-theme="light"] .skill-key__surface {
+  border-color: rgb(148 163 184 / 0.42);
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 0.98), transparent 38%),
+    linear-gradient(180deg, color-mix(in srgb, var(--key-accent) 62%, white), color-mix(in srgb, var(--key-accent) 27%, #dfe6ee));
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.98), inset 0 -0.3rem rgb(100 116 139 / 0.12), 0 0.14rem 0 rgb(100 116 139 / 0.3);
+}
+
+:root[data-theme="light"] .skill-key__label {
+  color: rgb(15 23 42 / 0.7);
+}
+
+@media (max-width: 520px) {
+  .skill-keyboard {
+    margin-top: 2rem;
+    padding: 0;
+  }
+
+  .skill-keyboard__hint {
+    margin: -1rem 0 1rem;
+    font-size: 0.7rem;
+  }
+
+  .skill-keyboard__row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-inline: 0;
+    transform: none;
+  }
+
+  .skill-keyboard__row--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-inline: 16%;
+  }
+
+  .skill-key {
+    min-height: 4.35rem;
+  }
+
+  .skill-keyboard__status {
+    font-size: 0.58rem;
+  }
+}
+
 :root[data-theme="light"] .text-white,
 :root[data-theme="light"] .text-white\/30,
 :root[data-theme="light"] .text-white\/54,
@@ -230,3 +468,514 @@ body::after {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Interactive mechanical keyboard treatment */
+.skill-keyboard__deck {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.45rem, 1.3vw, 0.85rem);
+  max-width: 52rem;
+  padding: clamp(0.65rem, 2vw, 1.1rem);
+  margin-inline: auto;
+  perspective: 1000px;
+}
+
+.skill-key {
+  min-height: clamp(4.6rem, 9vw, 6rem);
+  border-radius: 0.65rem;
+  transform-style: preserve-3d;
+}
+
+.skill-key__surface {
+  transform: rotate(var(--key-tilt, 0deg));
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.skill-key__surface::after {
+  content: "";
+  position: absolute;
+  inset: 0.35rem -0.04rem -0.45rem;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(180deg, #1e293b, #0b1220);
+  box-shadow: 0 0.65rem 0.85rem rgb(0 0 0 / 0.42);
+}
+
+.skill-key__switch {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  width: 0.7rem;
+  height: 0.18rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.2);
+  opacity: 0.65;
+  transform: translateX(-50%);
+}
+
+.skill-key:hover .skill-key__surface,
+.skill-key:focus-visible .skill-key__surface {
+  transform: rotate(var(--key-tilt, 0deg)) translateY(-4px) translateZ(4px);
+}
+
+.skill-key:active .skill-key__surface {
+  transform: rotate(var(--key-tilt, 0deg)) translateY(5px) translateZ(-2px);
+}
+
+.skill-keyboard__hint {
+  margin-top: -1.5rem;
+  text-align: center;
+}
+
+.skill-keyboard__status {
+  justify-content: center;
+  margin-top: 0.8rem;
+}
+
+:root[data-theme="light"] .skill-key__surface::after {
+  background: linear-gradient(180deg, #cbd5e1, #94a3b8);
+  box-shadow: 0 0.65rem 0.85rem rgb(15 23 42 / 0.2);
+}
+
+@media (max-width: 640px) {
+  .skill-keyboard__deck {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+    padding-inline: 0;
+  }
+
+  .skill-key {
+    min-height: 4.35rem;
+  }
+}
+
+.skill-keyboard__base {
+  width: min(100%, 940px);
+  margin-inline: auto;
+  padding: clamp(0.75rem, 2.2vw, 1.2rem);
+  overflow-x: auto;
+  border: 1px solid rgb(148 163 184 / 0.16);
+  border-radius: 0.9rem;
+  background: linear-gradient(145deg, #111827, #0b1220 68%);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.08), inset 0 -0.45rem rgb(0 0 0 / 0.35), 0 1.5rem 3rem rgb(0 0 0 / 0.24);
+}
+
+.skill-keyboard__row {
+  display: flex;
+  min-width: 760px;
+  align-items: stretch;
+  gap: clamp(0.35rem, 0.75vw, 0.6rem);
+  margin-bottom: clamp(0.35rem, 0.75vw, 0.6rem);
+}
+
+.skill-keyboard__row:last-child {
+  margin-bottom: 0;
+}
+
+.skill-keyboard__row--2 {
+  padding-left: 2.4rem;
+}
+
+.skill-keyboard__row--3 {
+  padding-left: 3rem;
+}
+
+.skill-keyboard__row--4 {
+  padding-left: 0.25rem;
+}
+
+.keyboard-utility-key,
+.skill-key {
+  width: clamp(3.9rem, 7.8vw, 5.5rem);
+  height: clamp(3.15rem, 6vw, 4.2rem);
+  flex: 0 0 auto;
+}
+
+.keyboard-utility-key {
+  display: grid;
+  place-items: center;
+  border: 1px solid rgb(148 163 184 / 0.12);
+  border-radius: 0.45rem;
+  background: linear-gradient(145deg, rgb(30 41 59 / 0.9), rgb(15 23 42 / 0.9));
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.06), 0 0.2rem 0 rgb(0 0 0 / 0.35);
+  color: rgb(148 163 184 / 0.72);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.keyboard-utility-key--wide {
+  width: clamp(5.5rem, 11vw, 8rem);
+}
+
+.skill-key {
+  position: relative;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.48rem;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  perspective: 500px;
+}
+
+.skill-key::after {
+  inset: 0.26rem 0 -0.28rem;
+  border-radius: inherit;
+  background: #070d18;
+  box-shadow: 0 0.38rem 0.55rem rgb(0 0 0 / 0.45);
+}
+
+.skill-key__surface {
+  gap: 0.22rem;
+  border-color: rgb(148 163 184 / 0.18);
+  border-radius: 0.48rem;
+  background: linear-gradient(145deg, rgb(51 65 85 / 0.8), #172033 52%, #111827);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.12), inset 0 -0.22rem rgb(0 0 0 / 0.3), 0 0.12rem 0 rgb(0 0 0 / 0.75);
+  transform: none;
+}
+
+.skill-key__surface::after {
+  display: none;
+}
+
+.skill-key__switch {
+  top: 0.25rem;
+  width: 0.65rem;
+  height: 0.12rem;
+  background: rgb(var(--accent) / 0.7);
+}
+
+.skill-key__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: rgb(226 232 240 / 0.9);
+  filter: none;
+}
+
+.skill-key__label {
+  max-width: 90%;
+  color: rgb(226 232 240 / 0.78);
+  font-size: clamp(0.5rem, 0.9vw, 0.64rem);
+  opacity: 1;
+  transform: none;
+}
+
+.skill-key:hover .skill-key__surface,
+.skill-key:focus-visible .skill-key__surface {
+  border-color: rgb(var(--accent) / 0.7);
+  background: linear-gradient(145deg, rgb(59 130 246 / 0.22), #172033 58%, #111827);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.16), 0 0 1.1rem rgb(var(--accent) / 0.12), 0 0.16rem 0 rgb(0 0 0 / 0.75);
+  transform: none;
+}
+
+.skill-key:hover .skill-key__icon,
+.skill-key:focus-visible .skill-key__icon {
+  color: #f8fafc;
+  transform: translateY(-1px);
+}
+
+.skill-key:active .skill-key__surface {
+  box-shadow: inset 0 0.22rem 0.35rem rgb(0 0 0 / 0.38), 0 0 0 rgb(0 0 0 / 0.4);
+}
+
+:root[data-theme="light"] .skill-keyboard__base {
+  border-color: rgb(100 116 139 / 0.25);
+  background: linear-gradient(145deg, #e5e7eb, #cbd5e1);
+  box-shadow: inset 0 1px white, inset 0 -0.45rem rgb(100 116 139 / 0.18), 0 1.5rem 3rem rgb(15 23 42 / 0.1);
+}
+
+:root[data-theme="light"] .keyboard-utility-key {
+  border-color: rgb(100 116 139 / 0.2);
+  background: linear-gradient(145deg, #f8fafc, #dbe2ea);
+  color: rgb(30 41 59 / 0.62);
+  box-shadow: inset 0 1px white, 0 0.2rem 0 rgb(100 116 139 / 0.25);
+}
+
+:root[data-theme="light"] .skill-key__surface {
+  border-color: rgb(100 116 139 / 0.25);
+  background: linear-gradient(145deg, #ffffff, #e2e8f0 64%, #cbd5e1);
+  box-shadow: inset 0 1px white, inset 0 -0.22rem rgb(100 116 139 / 0.12), 0 0.12rem 0 rgb(100 116 139 / 0.28);
+}
+
+:root[data-theme="light"] .skill-key__label,
+:root[data-theme="light"] .skill-key__icon {
+  color: rgb(15 23 42 / 0.78);
+}
+
+@media (max-width: 640px) {
+  .skill-keyboard__base {
+    margin-inline: auto;
+  }
+
+  .skill-keyboard__row {
+    min-width: 720px;
+  }
+
+  .skill-keyboard__row--2 {
+    padding-left: 1.8rem;
+  }
+
+  .skill-keyboard__row--3 {
+    padding-left: 2.2rem;
+  }
+}
+
+/* Skill keys stay flat and aligned like a compact desktop keyboard. */
+.skill-keyboard {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  padding: 0 clamp(0.25rem, 2vw, 1rem);
+  overflow: visible;
+}
+
+.skill-keyboard__hint {
+  margin: -1.5rem 0 1.75rem;
+  color: rgb(var(--muted) / 0.9);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.skill-keyboard__base {
+  width: 100%;
+  max-width: 58rem;
+  margin-inline: auto;
+  padding: clamp(0.75rem, 2.5vw, 1.35rem);
+  overflow: visible;
+  border: 1px solid rgb(148 163 184 / 0.2);
+  border-radius: 1rem;
+  background: #0b1220;
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.08), inset 0 -0.45rem rgb(0 0 0 / 0.28), 0 1.5rem 3rem rgb(0 0 0 / 0.2);
+}
+
+.skill-keyboard__row,
+.skill-keyboard__row--2,
+.skill-keyboard__row--3,
+.skill-keyboard__row--4 {
+  display: grid;
+  min-width: 0;
+  align-items: stretch;
+  gap: clamp(0.35rem, 1vw, 0.7rem);
+  margin: 0 auto clamp(0.35rem, 1vw, 0.7rem);
+  padding: 0;
+  transform: none;
+}
+
+.skill-keyboard__row:last-child {
+  margin-bottom: 0;
+}
+
+.skill-keyboard__row--1 {
+  width: 90%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.skill-keyboard__row--2 {
+  width: 76%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.skill-keyboard__row--3 {
+  width: 58%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.skill-key {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  height: clamp(3.7rem, 7vw, 5.4rem);
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.65rem;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  perspective: none;
+  transform-style: flat;
+}
+
+.skill-key::after {
+  inset: 0.28rem 0 -0.3rem;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--key-accent) 32%, #050912);
+  box-shadow: 0 0.42rem 0.6rem rgb(0 0 0 / 0.42);
+}
+
+.skill-key__surface {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--key-accent) 52%, rgb(255 255 255 / 0.16));
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--key-accent) 64%, #182235);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.28), inset 0 -0.3rem rgb(0 0 0 / 0.2), 0 0.15rem 0 rgb(0 0 0 / 0.7);
+  transform: none;
+  transition: border-color 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.skill-key__surface::before {
+  left: 12%;
+  width: 76%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+  opacity: 0.45;
+}
+
+.skill-key__switch {
+  top: 0.35rem;
+  width: 0.7rem;
+  height: 0.14rem;
+  background: rgb(255 255 255 / 0.55);
+}
+
+.skill-key__icon {
+  width: clamp(2rem, 4.2vw, 2.75rem);
+  height: clamp(2rem, 4.2vw, 2.75rem);
+  max-width: 72%;
+  max-height: 72%;
+  color: white;
+  filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.38)) drop-shadow(0 0 0.12rem rgb(255 255 255 / 0.2));
+  transition: color 180ms ease, filter 180ms ease;
+}
+
+.skill-key__label {
+  display: none;
+}
+
+.skill-key__tooltip {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 50%;
+  display: grid;
+  gap: 0.12rem;
+  min-width: max-content;
+  padding: 0.42rem 0.6rem;
+  border: 1px solid rgb(255 255 255 / 0.14);
+  border-radius: 0.45rem;
+  background: #111827;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.28);
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 0.65rem));
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.skill-key__tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -0.3rem;
+  left: 50%;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: #111827;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.skill-key__tooltip strong,
+.skill-key__tooltip small {
+  position: relative;
+  z-index: 1;
+}
+
+.skill-key__tooltip strong {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.skill-key__tooltip small {
+  color: rgb(226 232 240 / 0.65);
+  font-size: 0.58rem;
+}
+
+.skill-key:hover .skill-key__surface,
+.skill-key:focus-visible .skill-key__surface,
+.skill-key:has(.skill-key__tooltip--selected) .skill-key__surface {
+  border-color: var(--key-accent);
+  box-shadow: inset 0 1px rgb(255 255 255 / 0.32), 0 0 1.1rem color-mix(in srgb, var(--key-accent) 35%, transparent), 0 0.2rem 0 rgb(0 0 0 / 0.65);
+  filter: brightness(1.1);
+}
+
+.skill-key:hover .skill-key__tooltip,
+.skill-key:focus-visible .skill-key__tooltip,
+.skill-key__tooltip--selected {
+  opacity: 1;
+  transform: translate(-50%, calc(-100% - 0.65rem));
+}
+
+.skill-key:hover .skill-key__icon,
+.skill-key:focus-visible .skill-key__icon {
+  filter: drop-shadow(0 0 0.45rem color-mix(in srgb, var(--key-accent) 65%, transparent));
+}
+
+.skill-key:active .skill-key__surface {
+  box-shadow: inset 0 0.25rem 0.4rem rgb(0 0 0 / 0.3), 0 0 0 rgb(0 0 0 / 0.35);
+}
+
+:root[data-theme="light"] .skill-keyboard__base {
+  border-color: rgb(100 116 139 / 0.28);
+  background: #e5e7eb;
+  box-shadow: inset 0 1px white, inset 0 -0.45rem rgb(100 116 139 / 0.18), 0 1.5rem 3rem rgb(15 23 42 / 0.1);
+}
+
+:root[data-theme="light"] .skill-key::after {
+  background: color-mix(in srgb, var(--key-accent) 24%, #94a3b8);
+  box-shadow: 0 0.42rem 0.6rem rgb(15 23 42 / 0.18);
+}
+
+:root[data-theme="light"] .skill-key__surface {
+  border-color: color-mix(in srgb, var(--key-accent) 42%, #94a3b8);
+  background: color-mix(in srgb, var(--key-accent) 30%, #ffffff);
+  box-shadow: inset 0 1px white, inset 0 -0.3rem rgb(100 116 139 / 0.12), 0 0.15rem 0 rgb(100 116 139 / 0.28);
+}
+
+:root[data-theme="light"] .skill-key__icon {
+  color: rgb(15 23 42 / 0.82);
+  filter: drop-shadow(0 1px 1px rgb(255 255 255 / 0.8));
+}
+
+:root[data-theme="light"] .skill-key__tooltip {
+  border-color: rgb(148 163 184 / 0.35);
+  background: #ffffff;
+  color: rgb(15 23 42);
+}
+
+:root[data-theme="light"] .skill-key__tooltip::after {
+  background: #ffffff;
+}
+
+:root[data-theme="light"] .skill-key__tooltip small {
+  color: rgb(71 85 105 / 0.8);
+}
+
+@media (max-width: 640px) {
+  .skill-keyboard__base {
+    padding: 0.7rem;
+  }
+
+  .skill-keyboard__row--1,
+  .skill-keyboard__row--2,
+  .skill-keyboard__row--3 {
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .skill-keyboard__row--3 {
+    width: 76%;
+  }
+
+  .skill-key {
+    height: clamp(3.25rem, 15vw, 4.25rem);
+  }
+
+  .skill-key__tooltip {
+    padding: 0.36rem 0.5rem;
+  }
+}

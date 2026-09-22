@@ -1,18 +1,23 @@
 import {
-  Code2,
-  Figma,
-  Github,
-  Database,
-  GitBranch,
-  Globe2,
-  Layers3,
-  Palette,
-  Server,
-  Send,
-  CodeXml,
-  Workflow,
   Smartphone
 } from "lucide-react";
+import {
+  FaCss3Alt,
+  FaGitAlt,
+  FaGithub,
+  FaHtml5,
+  FaPhp,
+  FaReact,
+} from "react-icons/fa";
+import {
+  SiFigma,
+  SiJavascript,
+  SiMysql,
+  SiPostman,
+  SiTailwindcss,
+  SiVite,
+} from "react-icons/si";
+import { Globe2 } from "lucide-react";
 
 export const profile = {
   name: "Reihan Rachma Shafira",
@@ -26,26 +31,18 @@ export const profile = {
 };
 
 export const skills = [
-  { name: "HTML & CSS", icon: Code2 },
-  { name: "JavaScript", icon: Code2 },
-  { name: "TypeScript", icon: Code2 },
-  { name: "PHP", icon: Code2 },
-  { name: "Laravel", icon: Code2 },
-  { name: "Python", icon: Code2 },
-  { name: "Tailwind", icon: Palette },
-  { name: "React.js", icon: Code2 },
-  { name: "Next.js", icon: Globe2 },
-  { name: "Node.js", icon: Server },
-  { name: "SQL", icon: Database },
-  { name: "REST API", icon: Globe2 },
-  { name: "Postman", icon: Send },
-  { name: "Figma", icon: Figma },
-  { name: "Git", icon: GitBranch },
-  { name: "GitHub", icon: Github },
-  { name: "UML", icon: Workflow },
-  { name: "DBeaver", icon: Database },
-  { name: "Pentaho Data Integration", icon: Layers3 },
-  { name: "Cisco Packet Tracer", icon: CodeXml },
+  { name: "React.js", icon: FaReact, accent: "#61dafb" },
+  { name: "JavaScript", icon: SiJavascript, accent: "#f7df1e" },
+  { name: "HTML", icon: FaHtml5, accent: "#e34f26" },
+  { name: "CSS", icon: FaCss3Alt, accent: "#1572b6" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, accent: "#06b6d4" },
+  { name: "Git", icon: FaGitAlt, accent: "#f05032" },
+  { name: "GitHub", icon: FaGithub, accent: "#24292f" },
+  { name: "Figma", icon: SiFigma, accent: "#f24e1e" },
+  { name: "REST API", icon: SiPostman, accent: "#ff6c37" },
+  { name: "Vite", icon: SiVite, accent: "#646cff" },
+  { name: "MySQL", icon: SiMysql, accent: "#4479a1" },
+  { name: "PHP", icon: FaPhp, accent: "#777bb4" },
 ];
 
 export const projects = [
@@ -110,7 +107,7 @@ export const experiences = [
 ];
 
 export const socials = [
-  { label: "GitHub", href: "https://github.com/rrsfira", icon: Github },
+  { label: "GitHub", href: "https://github.com/rrsfira", icon: FaGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/reihan-rachma-shafira-1868861b8", icon: Globe2 },
   { label: "Instagram", href: "https://www.instagram.com/rrsfira31", icon: Smartphone }
 ];

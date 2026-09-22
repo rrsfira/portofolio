@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   description: "Premium interactive developer portfolio with a physics lanyard card."
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>{children}</body>

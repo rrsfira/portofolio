@@ -6,33 +6,48 @@ import { useEffect, useState } from "react";
 import { ProfileCard } from "@/components/ProfileCard";
 import { profile } from "@/lib/data";
 
+const skills = [
+  "Fullstack Web Developer",
+  "UI/UX Designer",
+  "Data Analyst",
+];
+
 export function Hero() {
-  const [displayedName, setDisplayedName] = useState("");
+  const [displayedSkill, setDisplayedSkill] = useState("");
+  const [skillIndex, setSkillIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    let characterIndex = 0;
-    let isDeleting = false;
+    const currentSkill = skills[skillIndex];
 
-    const typewriter = window.setInterval(() => {
-      if (!isDeleting) {
-        characterIndex += 1;
-        setDisplayedName(profile.name.slice(0, characterIndex));
+    const typewriter = window.setTimeout(
+      () => {
+        if (!isDeleting) {
+          const nextText = currentSkill.slice(0, displayedSkill.length + 1);
+          setDisplayedSkill(nextText);
 
-        if (characterIndex === profile.name.length) {
-          isDeleting = true;
+          if (nextText === currentSkill) {
+            setIsDeleting(true);
+          }
+        } else {
+          const nextText = currentSkill.slice(0, displayedSkill.length - 1);
+          setDisplayedSkill(nextText);
+
+          if (nextText === "") {
+            setIsDeleting(false);
+            setSkillIndex((prev) => (prev + 1) % skills.length);
+          }
         }
-      } else {
-        characterIndex -= 1;
-        setDisplayedName(profile.name.slice(0, characterIndex));
+      },
+      !isDeleting && displayedSkill === currentSkill
+        ? 1800
+        : isDeleting
+          ? 60
+          : 100
+    );
 
-        if (characterIndex === 0) {
-          isDeleting = false;
-        }
-      }
-    }, isDeleting ? 70 : 130);
-
-    return () => window.clearInterval(typewriter);
-  }, []);
+    return () => window.clearTimeout(typewriter);
+  }, [displayedSkill, isDeleting, skillIndex]);
 
   return (
     <section
@@ -48,14 +63,23 @@ export function Hero() {
         <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
           Hello, I&apos;m
         </p>
+
         <h1 className="min-h-[2.4em] max-w-full break-words text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:min-h-[2.16em] sm:text-5xl lg:min-h-[2.16em] lg:text-6xl">
-          {displayedName}
-          <span className="ml-1 inline-block h-[0.9em] w-[3px] animate-pulse bg-accent align-[-0.08em]" aria-hidden="true" />
+          {displayedSkill}
+          <span
+            className="ml-1 inline-block h-[0.9em] w-[3px] animate-pulse bg-accent align-[-0.08em]"
+            aria-hidden="true"
+          />
         </h1>
-        <p className="mt-4 text-base text-white/78 sm:text-lg">{profile.role}</p>
+
+        <p className="mt-4 text-base text-white/78 sm:text-lg">
+          {profile.name}
+        </p>
+
         <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base">
           {profile.bio}
         </p>
+
         <div className="mt-9 flex flex-wrap gap-3">
           <a
             href="/CV%20Shafira%20TERBARU%202026.pdf"
@@ -65,8 +89,8 @@ export function Hero() {
             <Download className="h-4 w-4" />
             Download Resume
           </a>
+
           <a
-          
             href="#projects"
             className="focus-ring group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-black shadow-[0_0_45px_rgb(var(--accent)/0.28)] transition hover:scale-[1.02]"
           >
@@ -75,7 +99,10 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="hidden h-12 w-12 sm:mt-14 sm:block" aria-hidden="true" />
+        <div
+          className="hidden h-12 w-12 sm:mt-14 sm:block"
+          aria-hidden="true"
+        />
       </motion.div>
 
       <div className="order-1 lg:order-2 lg:translate-x-[60px] lg:-translate-y-[140px]">
