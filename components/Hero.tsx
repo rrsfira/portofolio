@@ -1,3 +1,4 @@
+
 "use client";
 
 import { ArrowRight, Download } from "lucide-react";
@@ -23,14 +24,22 @@ export function Hero() {
     const typewriter = window.setTimeout(
       () => {
         if (!isDeleting) {
-          const nextText = currentSkill.slice(0, displayedSkill.length + 1);
+          const nextText = currentSkill.slice(
+            0,
+            displayedSkill.length + 1
+          );
+
           setDisplayedSkill(nextText);
 
           if (nextText === currentSkill) {
             setIsDeleting(true);
           }
         } else {
-          const nextText = currentSkill.slice(0, displayedSkill.length - 1);
+          const nextText = currentSkill.slice(
+            0,
+            displayedSkill.length - 1
+          );
+
           setDisplayedSkill(nextText);
 
           if (nextText === "") {
@@ -57,29 +66,39 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0, y: 34 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        transition={{
+          duration: 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         className="order-2 max-w-2xl lg:order-1"
       >
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
+        {/* Greeting */}
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.34em] text-accent">
           Hello, I&apos;m
         </p>
 
-        <h1 className="min-h-[2.4em] max-w-full break-words text-3xl font-semibold leading-[1.08] tracking-tight text-white sm:min-h-[2.16em] sm:text-5xl lg:min-h-[2.16em] lg:text-6xl">
-          {displayedSkill}
-          <span
-            className="ml-1 inline-block h-[0.9em] w-[3px] animate-pulse bg-accent align-[-0.08em]"
-            aria-hidden="true"
-          />
+        {/* NAME */}
+        <h1 className="text-4xl font-bold leading-[1.02] tracking-[-0.035em] text-white sm:text-6xl lg:text-7xl">
+          {profile.name}
         </h1>
 
-        <p className="mt-4 text-base text-white/78 sm:text-lg">
-          {profile.name}
-        </p>
+        {/* SKILL TYPEWRITER */}
+        <div className="mt-4 flex min-h-[2rem] items-center sm:mt-5 sm:min-h-[2.5rem]">
+          <p className="text-lg font-medium leading-tight text-accent sm:text-2xl lg:text-3xl">
+            {displayedSkill}
+            <span
+              className="ml-1 inline-block h-[0.9em] w-[2px] animate-pulse bg-accent align-[-0.08em]"
+              aria-hidden="true"
+            />
+          </p>
+        </div>
 
-        <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base">
+        {/* BIO */}
+        <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:mt-6 sm:text-base">
           {profile.bio}
         </p>
 
+        {/* BUTTONS */}
         <div className="mt-9 flex flex-wrap gap-3">
           <a
             href="/CV%20Shafira%20TERBARU%202026.pdf"
@@ -105,6 +124,7 @@ export function Hero() {
         />
       </motion.div>
 
+      {/* PROFILE CARD */}
       <div className="order-1 lg:order-2 lg:translate-x-[60px] lg:-translate-y-[140px]">
         <motion.div
           initial={{ opacity: 0, scale: 0.92, y: 30 }}
