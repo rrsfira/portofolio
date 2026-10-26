@@ -956,19 +956,29 @@ body::after {
 }
 
 @media (max-width: 640px) {
+  .skill-keyboard__hint {
+    margin: 0 0 1.25rem;
+    padding-inline: 0.5rem;
+    line-height: 1.5;
+  }
+
   .skill-keyboard__base {
-    padding: 0.7rem;
+    padding: 0;
   }
 
   .skill-keyboard__row--1,
-  .skill-keyboard__row--2,
-  .skill-keyboard__row--3 {
+  .skill-keyboard__row--2 {
     width: 100%;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .skill-keyboard__row--1 .skill-key:nth-child(5) {
+    grid-column: 2;
+  }
+
   .skill-keyboard__row--3 {
     width: 76%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .skill-key {
