@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { SectionTitle } from "@/components/SectionTitle";
 import { skills } from "@/lib/data";
 
@@ -21,6 +21,21 @@ const skillCategories: Record<string, string> = {
   Vite: "Build Tool",
   MySQL: "Database",
   PHP: "Backend Language",
+};
+
+const skillDescriptions: Record<string, string> = {
+  "React.js": "A component-based library for building fast, interactive interfaces.",
+  JavaScript: "The programming language that powers interactive behavior across the web.",
+  HTML: "The semantic markup foundation for accessible, structured web pages.",
+  CSS: "The styling language used to shape responsive layouts and visual systems.",
+  "Tailwind CSS": "A utility-first CSS framework for composing responsive interfaces quickly.",
+  Git: "A version control system for tracking changes and collaborating safely.",
+  GitHub: "A platform for hosting repositories, reviewing code, and working with teams.",
+  Figma: "A collaborative design tool for exploring and communicating interface ideas.",
+  "REST API": "A practical way for applications to exchange resources over HTTP.",
+  Vite: "A fast frontend build tool with an efficient development workflow.",
+  MySQL: "A relational database for storing and querying structured application data.",
+  PHP: "A server-side language used to build dynamic web applications and services.",
 };
 
 type SkillKeyProps = {
@@ -56,13 +71,33 @@ function SkillKey({ skill, skillIndex, typingIndex, selectedIndex, onSelect }: S
       }}
     >
       <span className="skill-key__surface">
-        <span className="skill-key__switch" aria-hidden="true" />
-        <Icon aria-hidden="true" className="skill-key__icon" strokeWidth={1.8} />
+        <span className="skill-key__mount" aria-hidden="true" />
+        <span className="skill-key__side" aria-hidden="true" />
+        <span className="skill-key__bevel" aria-hidden="true" />
+        <span className="skill-key__top">
+          <Icon aria-hidden="true" className="skill-key__icon" strokeWidth={1.8} />
+        </span>
       </span>
       <span className={`skill-key__tooltip${isSelected ? " skill-key__tooltip--selected" : ""}`} role="tooltip">
         <strong>{skill.name}</strong>
         <small>{skillCategories[skill.name]}</small>
       </span>
+      <AnimatePresence>
+        {isSelected ? (
+          <motion.span
+            className="skill-key__detail-bubble"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            role="status"
+          >
+            <strong>{skill.name}</strong>
+            <small>{skillCategories[skill.name]}</small>
+            <span>{skillDescriptions[skill.name]}</span>
+          </motion.span>
+        ) : null}
+      </AnimatePresence>
     </motion.button>
   );
 }
@@ -95,24 +130,26 @@ function SkillKeyboard() {
       aria-label="Interactive mechanical keyboard of development skills"
     >
       <p className="skill-keyboard__hint">Tools and technologies I use to build digital experiences.</p>
-      <div className="skill-keyboard__base">
-        {skillRows.map((row, rowIndex) => (
-          <div className={`skill-keyboard__row skill-keyboard__row--${rowIndex + 1}`} key={rowIndex}>
-            {row.map((skill) => {
-              const skillIndex = skills.indexOf(skill);
-              return (
-              <SkillKey
-                key={skills[skillIndex].name}
-                skill={skills[skillIndex]}
-                skillIndex={skillIndex}
-                typingIndex={typingIndex}
-                selectedIndex={selectedIndex}
-                onSelect={(index) => setSelectedIndex((current) => current === index ? null : index)}
-              />
-              );
-            })}
-          </div>
-        ))}
+      <div className="skill-keyboard__viewport">
+        <div className="skill-keyboard__base">
+          {skillRows.map((row, rowIndex) => (
+            <div className={`skill-keyboard__row skill-keyboard__row--${rowIndex + 1}`} key={rowIndex}>
+              {row.map((skill) => {
+                const skillIndex = skills.indexOf(skill);
+                return (
+                  <SkillKey
+                    key={skills[skillIndex].name}
+                    skill={skills[skillIndex]}
+                    skillIndex={skillIndex}
+                    typingIndex={typingIndex}
+                    selectedIndex={selectedIndex}
+                    onSelect={(index) => setSelectedIndex((current) => current === index ? null : index)}
+                  />
+                );
+              })}
+            </div>
+          ))}
+        </div>
       </div>
       <div className="skill-keyboard__status" aria-hidden="true">
         <span className="skill-keyboard__status-dot" />
@@ -124,7 +161,7 @@ function SkillKeyboard() {
 
 export function Skills() {
   return (
-    <section id="skills" className="section-shell py-16 sm:py-20 lg:py-24">
+    <section id="skills" className="section-shell skills-section py-16 sm:py-20 lg:py-24">
       <SectionTitle eyebrow="Skills" title="Skills" />
       <SkillKeyboard />
     </section>

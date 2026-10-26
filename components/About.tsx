@@ -1,86 +1,237 @@
+
 "use client";
 
-import { BookOpen, Code2, Lightbulb, Sparkles, TrendingUp } from "lucide-react";
+import {
+  ArrowUpRight,
+  BookOpen,
+  Code2,
+  Lightbulb,
+  Sparkles,
+  TrendingUp,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
 const principles = [
   {
     number: "01",
     title: "Learning",
-    description: "I am building my foundation through online resources, practice, and hands-on projects.",
+    subtitle: "Build a strong foundation",
+    description:
+      "Learning through practice, exploration, and hands-on projects.",
     icon: BookOpen,
-    tone: "from-blue-500/20 to-indigo-500/10"
+    color: "text-sky-400",
   },
   {
     number: "02",
     title: "Building",
-    description: "I enjoy turning ideas into real websites and interfaces to apply what I learn.",
+    subtitle: "Turn ideas into reality",
+    description:
+      "Creating functional websites and interactive user experiences.",
     icon: Code2,
-    tone: "from-cyan-500/20 to-blue-500/10"
+    color: "text-cyan-400",
   },
   {
     number: "03",
     title: "Exploring",
-    description: "I am exploring frontend development, UI design, and modern web technologies.",
+    subtitle: "Discover new possibilities",
+    description:
+      "Exploring frontend development, UI/UX design, and modern technologies.",
     icon: Lightbulb,
-    tone: "from-sky-500/20 to-indigo-500/10"
+    color: "text-violet-400",
   },
   {
     number: "04",
     title: "Growing",
-    description: "Every project is a step forward. I am improving bit by bit, and excited for what is ahead.",
+    subtitle: "Improve with every project",
+    description:
+      "Learning from every challenge and continuously refining my skills.",
     icon: TrendingUp,
-    tone: "from-violet-500/20 to-fuchsia-500/10"
-  }
+    color: "text-emerald-400",
+  },
 ];
 
 export function About() {
   return (
-    <section id="about" className="section-shell py-16 sm:py-20 lg:py-28">
-      <div className="grid items-center gap-8 md:gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16">
+    <section
+      id="about"
+      className="section-shell relative overflow-hidden py-14 sm:py-16 lg:py-20"
+    >
+      {/* Subtle ambient glow */}
+      <div className="pointer-events-none absolute -left-40 top-20 h-80 w-80 rounded-full bg-cyan-500/[0.06] blur-[120px]" />
+
+      <div className="relative grid items-start gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:gap-16 xl:gap-20">
+        {/* Introduction */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65 }}
+          className="lg:pt-3"
         >
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-accent">About me</p>
-          <h2 className="max-w-xl text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl">
-            Learning by building, growing with every <span className="accent-gradient">project.</span>
+          {/* Section label */}
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-8 bg-cyan-400" />
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-cyan-400">
+              About me
+            </p>
+          </div>
+
+          {/* Main heading */}
+          <h2 className="max-w-xl text-[2.65rem] font-semibold leading-[1.06] tracking-[-0.045em] text-white sm:text-5xl lg:text-[3.5rem] xl:text-6xl">
+            Learning.
+            <br />
+            Building.
+            <br />
+            <span className="accent-gradient">Becoming more.</span>
           </h2>
-          <p className="mt-7 max-w-lg text-base leading-8 text-white/65 md:text-lg">
-            I am a beginner developer who enjoys turning ideas into simple, useful, and interactive
-            web experiences. I am continuously learning, working on projects, and improving with
-            every build.
+
+          {/* Description */}
+          <p className="mt-6 max-w-md text-sm leading-7 text-white/60 sm:text-base sm:leading-7">
+            I am a beginner developer passionate about creating simple,
+            useful, and interactive web experiences. Every project is a
+            chance to learn, experiment, and grow.
           </p>
 
-          <div className="mt-9 flex max-w-md items-center gap-4 rounded-[8px] border border-white/10 bg-white/[0.035] p-4 backdrop-blur-xl">
-            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gradient-to-br from-violet-500/20 to-blue-500/20 text-violet-300 ring-1 ring-white/10">
-              <Sparkles className="h-5 w-5" />
+          {/* Availability */}
+          <div className="mt-8 flex max-w-md items-center gap-4 rounded-xl border border-white/[0.09] bg-white/[0.025] p-4 transition-colors duration-300 hover:border-cyan-400/20 hover:bg-white/[0.04]">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-cyan-400/15 bg-cyan-400/[0.08] text-cyan-300">
+              <Sparkles size={19} strokeWidth={1.7} />
             </div>
-            <div>
-              <p className="font-semibold text-white">Open to opportunities</p>
-              <p className="mt-1 text-sm leading-6 text-muted">I am excited to learn, collaborate, and contribute to real projects.</p>
+
+            <div className="min-w-0 flex-1">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-sm font-semibold text-white sm:text-base">
+                  Open to opportunities
+                </h3>
+
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40" />
+                  <span className="relative h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+              </div>
+
+              <p className="mt-1 text-xs leading-5 text-white/45 sm:text-sm">
+                Ready to learn, collaborate, and create.
+              </p>
             </div>
+          </div>
+
+          {/* Minimal signature */}
+          <div className="mt-8 flex items-center gap-3">
+            <span className="font-mono text-[10px] tracking-[0.2em] text-white/30">
+              KEEP LEARNING
+            </span>
+            <span className="h-px w-8 bg-white/15" />
+            <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-400/60">
+              KEEP BUILDING
+            </span>
           </div>
         </motion.div>
 
+        {/* Journey */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1, duration: 0.7 }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="min-w-0"
         >
-          {principles.map(({ number, title, description, icon: Icon, tone }) => (
-            <div key={number} className="glass min-h-[258px] rounded-[8px] p-6 transition-transform duration-300 hover:-translate-y-1 md:p-7">
-              <div className={`grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br ${tone} text-blue-400 ring-1 ring-white/5`}>
-                <Icon className="h-7 w-7" strokeWidth={1.8} />
-              </div>
-              <h3 className="mt-6 text-xl font-semibold text-white">{number}. {title}</h3>
-              <p className="mt-3 max-w-xs text-sm leading-6 text-white/62">{description}</p>
+          {/* Timeline heading */}
+          <div className="mb-5 flex items-end justify-between gap-4 border-b border-white/10 pb-4">
+            <div>
+              <p className="text-[10px] font-medium uppercase tracking-[0.25em] text-white/35">
+                My journey
+              </p>
+
+              <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                Growing through{" "}
+                <span className="accent-gradient">experience.</span>
+              </h3>
             </div>
-          ))}
+
+            <span className="mb-1 shrink-0 font-mono text-xs text-white/30">
+              01 / 04
+            </span>
+          </div>
+
+          {/* Journey items */}
+          <div className="relative">
+            <div className="absolute bottom-8 left-[19px] top-8 w-px bg-gradient-to-b from-cyan-400/40 via-white/10 to-transparent" />
+
+            <div className="space-y-1">
+              {principles.map(
+                (
+                  { number, title, subtitle, description, icon: Icon, color },
+                  index
+                ) => (
+                  <motion.div
+                    key={number}
+                    initial={{ opacity: 0, x: 12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: index * 0.08,
+                    }}
+                    className="group relative"
+                  >
+                    <div className="flex gap-4 rounded-xl border border-transparent px-3 py-4 transition-all duration-300 hover:border-white/[0.08] hover:bg-white/[0.025] sm:gap-5 sm:px-4 sm:py-[18px]">
+                      {/* Timeline icon */}
+                      <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.09] bg-[#0c1422] transition-all duration-300 group-hover:border-cyan-400/30 group-hover:bg-cyan-400/[0.08]">
+                        <Icon
+                          size={19}
+                          strokeWidth={1.7}
+                          className={`${color} transition-transform duration-300 group-hover:scale-110`}
+                        />
+                      </div>
+
+                      {/* Text */}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                          <span className="font-mono text-[10px] tracking-wider text-cyan-400/70">
+                            {number}
+                          </span>
+
+                          <span className="h-px w-4 bg-white/15" />
+
+                          <p className="text-[11px] text-white/40">
+                            {subtitle}
+                          </p>
+                        </div>
+
+                        <div className="mt-1.5 flex items-center justify-between gap-3">
+                          <h4 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-300 sm:text-xl">
+                            {title}
+                          </h4>
+
+                          <ArrowUpRight
+                            size={17}
+                            className="shrink-0 text-white/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-cyan-400"
+                          />
+                        </div>
+
+                        <p className="mt-1.5 max-w-md text-xs leading-6 text-white/50 sm:text-sm sm:leading-6">
+                          {description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Closing note */}
+          <div className="mt-4 flex items-center gap-3 border-t border-white/[0.08] pt-4">
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400" />
+
+            <p className="text-xs leading-6 text-white/45 sm:text-sm">
+              <span className="text-white/75">
+                Progress over perfection.
+              </span>{" "}
+              One project at a time.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
