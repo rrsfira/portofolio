@@ -9,18 +9,21 @@ const certificationRoadmap = [
     number: "01",
     title: "Web Development",
     description: "Strengthening practical skills across modern frontend and backend development.",
+    certificate: "/Website%20Development.pdf",
     icon: Award,
   },
   {
     number: "02",
     title: "UI/UX Design",
     description: "Building a stronger foundation in interface design, prototyping, and usability.",
+    certificate: "/UI-UX%20RESEARCH%20AND%20DESIGN.pdf",
     icon: BookOpen,
   },
   {
     number: "03",
-    title: "Data & Systems",
-    description: "Continuing to explore databases, APIs, analytics, and reliable system workflows.",
+    title: "Junior Web Programmer BNSP",
+    description: "Completed the Junior Web Programmer certification program at BNPS, demonstrating competency in fundamental web development, including HTML, CSS, JavaScript, database management, and basic backend development.",
+    certificate: "/bnsp.pdf",
     icon: BadgeCheck,
   },
 ];
@@ -35,7 +38,7 @@ export function Certifications() {
       />
 
       <div className="grid gap-4 md:grid-cols-3">
-        {certificationRoadmap.map(({ number, title, description, icon: Icon }, index) => (
+        {certificationRoadmap.map(({ number, title, description, certificate, icon: Icon }, index) => (
           <motion.article
             key={title}
             initial={{ opacity: 0, y: 24 }}
@@ -55,10 +58,15 @@ export function Certifications() {
             </p>
             <h3 className="mt-3 text-xl font-semibold text-white">{title}</h3>
             <p className="mt-3 min-h-[72px] text-sm leading-6 text-white/62">{description}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/55">
-              In progress
+            <a
+              href={certificate}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white/55 transition hover:text-white"
+            >
+              View certificate
               <ArrowUpRight className="h-4 w-4 text-accent transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-            </span>
+            </a>
           </motion.article>
         ))}
       </div>

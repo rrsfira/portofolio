@@ -49,8 +49,8 @@ export const projects = [
   {
     name: "Medical Equipment Store",
     year: "2024",
-    description: "A cinematic portfolio system for a distributed creative team.",
-    tech: ["React.js", "Node.js", "MySQL"],
+    description: "An e-commerce platform designed to help users explore and purchase various medical supplies through an intuitive, responsive, and user-friendly interface.",
+    tech: ["React.js", "Tailwind CSS", "Node.js", "MySQL"],
     image: "/TOKO.png",
     live: "#",
     source: "https://github.com/rrsfira/TokoKesehatan2.git"
@@ -58,8 +58,8 @@ export const projects = [
   {
     name: "Point of Sale (POS)",
     year: "2024",
-    description: "Operational dashboard with dense data, calm states, and fast filters.",
-    tech: ["React.js", "Tailwind CSS", "Figma"],
+    description: "A Point of Sale (POS) system featuring an operational dashboard for monitoring sales, purchases, customers, inventory, and business reports through structured data visualization.",
+    tech: ["React.js", "Tailwind CSS", "Chart.js", "Figma"],
     image: "/OK.png",
     live: "#",
     source: "https://github.com/rrsfira/POS-INTERN.git"
@@ -67,7 +67,7 @@ export const projects = [
   {
     name: "Siaga Surabaya",
     year: "2025",
-    description: "Premium storefront concept with editorial product storytelling.",
+    description: "An information platform that presents socialization activity data from the Surabaya Regional Disaster Management Agency (BPBD), featuring a statistical dashboard to monitor activities, information distribution, and outreach achievements in a structured and informative way.",
     tech: ["React.js", "Node.js", "MySQL", "Pentaho Data Integration", "Charts.js"],
     image: "/BPBD.png",
     live: "#",
@@ -76,7 +76,7 @@ export const projects = [
   {
     name: "SIMPEG",
     year: "2026",
-    description: "Premium storefront concept with editorial product storytelling.",
+    description: "A redesigned frontend for a web-based Employee Management Information System, integrating attendance tracking, payroll management, and leave requests. Designed with a responsive, structured, and user-friendly interface.",
     tech: ["React.js", "Tailwind", "Figma", "Charts.js"],
     image: "/SIMPEG.png",
     live: "#",
@@ -109,5 +109,5 @@ export const experiences = [
 export const socials = [
   { label: "GitHub", href: "https://github.com/rrsfira", icon: FaGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/reihan-rachma-shafira-1868861b8", icon: Globe2 },
-  { label: "Instagram", href: "https://www.instagram.com/rrsfira31", icon: Smartphone }
+  { label: "Instagram", href: "https://www.instagram.com/rrshafira31", icon: Smartphone }
 ];

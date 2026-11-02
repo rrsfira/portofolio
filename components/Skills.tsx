@@ -73,74 +73,77 @@ export function Skills() {
       id="skills"
       className="section-shell skills-section py-16 sm:py-20 lg:py-24"
     >
-      <SectionTitle eyebrow="Skills" title="Skills" />
+      <SectionTitle eyebrow="Skills" title="My Stack" />
 
       <div className="skill-rubiks-section">
         <p className="skill-rubiks__hint">
-          One face at a time: 9 skills built, 3 more to explore, and always
-          room to grow.
+          One face at a time skill more to explore and always room to grow.
         </p>
 
-        <SkillRubiksCube
-          selectedIndex={selectedIndex}
-          onSelect={handleSelect}
-        />
+        <div className="skill-rubiks__stage">
+          <SkillRubiksCube
+            selectedIndex={selectedIndex}
+            onSelect={handleSelect}
+          />
 
-        <AnimatePresence mode="wait">
-          {selectedSkill && (
-            <motion.article
-              key={selectedSkill.name}
-              className="skill-detail"
-              style={
-                {
-                  "--detail-accent": selectedSkill.accent,
-                } as React.CSSProperties
-              }
-              initial={{ opacity: 0, y: 12, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 6, scale: 0.99 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              aria-live="polite"
-            >
-              <div className="skill-detail__icon">
-                {(() => {
-                  const Icon = selectedSkill.icon;
-                  return <Icon size={30} aria-hidden="true" />;
-                })()}
-              </div>
+          <div className="skill-detail-overlay">
+            <AnimatePresence mode="wait">
+              {selectedSkill && (
+                <motion.article
+                  key={selectedSkill.name}
+                  className="skill-detail"
+                  style={
+                    {
+                      "--detail-accent": selectedSkill.accent,
+                    } as React.CSSProperties
+                  }
+                  initial={{ y: 12, scale: 0.98 }}
+                  animate={{ y: 0, scale: 1 }}
+                  exit={{ y: 6, scale: 0.99 }}
+                  transition={{ duration: 0.22, ease: "easeOut" }}
+                  aria-live="polite"
+                >
+                  <div className="skill-detail__icon">
+                    {(() => {
+                      const Icon = selectedSkill.icon;
+                      return <Icon size={30} aria-hidden="true" />;
+                    })()}
+                  </div>
 
-              <div className="skill-detail__content">
-                <span className="skill-detail__eyebrow">
-                  TECHNOLOGY SELECTED
-                </span>
+                  <div className="skill-detail__content">
+                    <span className="skill-detail__eyebrow">
+                      TECHNOLOGY SELECTED
+                    </span>
 
-                <h3>{selectedSkill.name}</h3>
+                    <h3>{selectedSkill.name}</h3>
 
-                <span className="skill-detail__category">
-                  {skillCategories[selectedSkill.name] ?? "Development Tool"}
-                </span>
+                    <span className="skill-detail__category">
+                      {skillCategories[selectedSkill.name] ?? "Development Tool"}
+                    </span>
 
-                <p>
-                  {skillDescriptions[selectedSkill.name] ??
-                    `${selectedSkill.name} is part of my development toolkit for building digital experiences.`}
-                </p>
-              </div>
+                    <p>
+                      {skillDescriptions[selectedSkill.name] ??
+                        `${selectedSkill.name} is part of my development toolkit for building digital experiences.`}
+                    </p>
+                  </div>
 
-              <button
-                type="button"
-                className="skill-detail__close"
-                aria-label="Close skill details"
-                onClick={() => setSelectedIndex(null)}
-              >
-                ×
-              </button>
-            </motion.article>
-          )}
-        </AnimatePresence>
+                  <button
+                    type="button"
+                    className="skill-detail__close"
+                    aria-label="Close skill details"
+                    onClick={() => setSelectedIndex(null)}
+                  >
+                    ×
+                  </button>
+                </motion.article>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
 
         <div className="skill-rubiks__status" aria-hidden="true">
           <span className="skill-rubiks__status-dot" />
-          <span>9 skills placed · 3 more growing · drag to rotate</span>
+          <span>Drag To Rotate · Click For Info</span>
         </div>
       </div>
     </section>
