@@ -11,7 +11,7 @@ import {
 import { motion } from "framer-motion";
 
 const statistics = [
-  { value: "4+", label: "Experience", icon: Code2 },
+  { value: "5+", label: "Experience", icon: Code2 },
   { value: "3.80 / 4.00", label: "GPA", icon: Trophy },
   { value: "Full Stack", label: "Developer", icon: Laptop },
   { value: "Surabaya, Indonesia", label: "Location", icon: MapPin },
@@ -82,7 +82,7 @@ export function About() {
           </h2>
 
           <p className="mt-4 max-w-2xl text-sm leading-6 text-muted sm:text-base">
-            I am a Full Stack Web Developer with experience in developing web-based applications through academic projects and internship programs. I am proficient in developing both frontend and backend components using HTML, CSS, JavaScript, TypeScript, Tailwind CSS, React.js, Next.js, Node.js, Express.js, PHP, Laravel, MySQL, and REST APIs. My expertise includes designing user interfaces, managing databases, integrating APIs, as well as performing testing, debugging, and application deployment. I am passionate about learning new technologies, highly adaptable to different work environments, and experienced in collaborating within teams to apply problem-solving skills in the creation of functional, effective, and user-friendly digital solutions.
+            I am a Full Stack Web Developer with experience in developing web-based applications through academic projects and internship programs. My expertise includes designing user interfaces, managing databases, integrating APIs, as well as performing testing, debugging, and application deployment. I am passionate about learning new technologies, highly adaptable to different work environments, and experienced in collaborating within teams to apply problem-solving skills in the creation of functional, effective, and user-friendly digital solutions.
           </p>
 
           <div className="mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition-colors hover:border-accent/35 sm:p-5">
@@ -100,7 +100,7 @@ export function About() {
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/10 pt-6 sm:gap-x-10 sm:gap-y-8">
+          <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-6 border-t border-white/10 pt-6 min-[480px]:grid-cols-2 sm:gap-x-10 sm:gap-y-8">
             {statistics.map((stat, index) => {
               const Icon = stat.icon;
 
@@ -117,7 +117,7 @@ export function About() {
                     <Icon size={20} strokeWidth={1.8} />
                   </div>
                   <div className="min-w-0">
-                    <p className="whitespace-nowrap text-lg font-bold leading-tight sm:text-xl">
+                    <p className="whitespace-nowrap text-base font-bold leading-tight sm:text-xl">
                       {stat.value}
                     </p>
                     <p className="mt-1 text-xs text-white/50 sm:text-sm">
