@@ -1,9 +1,9 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { useMemo, useRef, useState } from "react";
+import { Canvas } from "@react-three/fiber";
 import { ContactShadows, Html, OrbitControls, RoundedBox } from "@react-three/drei";
-import type { Group, PerspectiveCamera } from "three";
+import type { Group } from "three";
 import { skills } from "@/lib/data";
 
 const CUBELET_SIZE = 0.96;
@@ -144,19 +144,17 @@ function SkillTile({
           clearcoat={0.85}
           clearcoatRoughness={0.16}
           emissive={accent}
-          emissiveIntensity={selected ? 0.14 : hovered ? 0.06 : 0.035}
+          emissiveIntensity={selected ? 0.1 : hovered ? 0.025 : 0}
         />
       </RoundedBox>
 
       <Html
         position={[0, 0, 0.085]}
         center
-        transform
-        distanceFactor={4.5}
+        occlude
         style={{
-          width: "38px",
-          height: "38px",
-          overflow: "visible",
+          width: "32px",
+          height: "32px",
           display: "grid",
           placeItems: "center",
           pointerEvents: "none",
@@ -172,7 +170,6 @@ function SkillTile({
             display: "block",
             width: "27px",
             height: "27px",
-            flex: "0 0 27px",
             filter: "drop-shadow(0 1px 2px rgba(0,0,0,.4))",
           }}
         />
@@ -195,7 +192,7 @@ function CubeModel({ selectedIndex, onSelect }: Props) {
   }, []);
 
   return (
-    <group rotation={[0.04, 0.04, -0.02]}>
+    <group rotation={[0.08, -0.22, -0.04]}>
       {cubelets.map(([x, y, z], index) => (
         <RoundedBox
           key={`cubelet-${index}`}
@@ -207,11 +204,11 @@ function CubeModel({ selectedIndex, onSelect }: Props) {
           receiveShadow
         >
           <meshPhysicalMaterial
-            color="#151c27"
-            roughness={0.38}
-            metalness={0.06}
-            clearcoat={0.45}
-            clearcoatRoughness={0.2}
+            color="#080a0e"
+            roughness={0.3}
+            metalness={0.12}
+            clearcoat={0.35}
+            clearcoatRoughness={0.22}
           />
         </RoundedBox>
       ))}
@@ -228,36 +225,14 @@ function CubeModel({ selectedIndex, onSelect }: Props) {
   );
 }
 
-function ResponsiveCamera() {
-  const { camera, size } = useThree();
-
-  useLayoutEffect(() => {
-    const perspectiveCamera = camera as PerspectiveCamera;
-    const aspect = size.width / Math.max(size.height, 1);
-    const position: [number, number, number] =
-      aspect < 0.85
-        ? [4.8, 4.2, 5.8]
-        : aspect < 1.35
-          ? [4.1, 3.8, 6.7]
-          : [3.2, 3.2, 7.4];
-
-    perspectiveCamera.position.set(...position);
-    perspectiveCamera.lookAt(0, 0, 0);
-    perspectiveCamera.updateProjectionMatrix();
-  }, [camera, size.height, size.width]);
-
-  return null;
-}
-
 function Scene({ selectedIndex, onSelect }: Props) {
   return (
     <>
-      <ResponsiveCamera />
-      <ambientLight intensity={0.72} />
-      <hemisphereLight color="#e7f2ff" groundColor="#111827" intensity={0.9} />
+      <ambientLight intensity={0.48} />
+      <hemisphereLight color="#dcecff" groundColor="#05060a" intensity={0.7} />
       <directionalLight
-        position={[-4, 6, 6]}
-        intensity={2.7}
+        position={[-4, 6, 5]}
+        intensity={2.2}
         color="#ffffff"
         castShadow
         shadow-mapSize-width={1024}
@@ -268,9 +243,8 @@ function Scene({ selectedIndex, onSelect }: Props) {
         shadow-camera-bottom={-5}
         shadow-bias={-0.0002}
       />
-      <pointLight position={[-4, 2, 4]} intensity={5} distance={10} color="#258bff" />
-      <pointLight position={[4, 3, 1]} intensity={4} distance={10} color="#ff6d38" />
-      <pointLight position={[0, 4, 2]} intensity={2.5} distance={8} color="#ffffff" />
+      <pointLight position={[-4, 2, 3]} intensity={8} distance={9} color="#258bff" />
+      <pointLight position={[4, 2, -2]} intensity={7} distance={8} color="#ff6d38" />
 
       <CubeModel selectedIndex={selectedIndex} onSelect={onSelect} />
 
