@@ -5,11 +5,12 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import { profile } from "@/lib/data";
 
-const links = ["About", "Skills", "Projects", "Experience", "Certifications"];
+const links = ["About", "Skills", "Projects", "Experience"];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [isLightTheme, setIsLightTheme] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const { scrollY } = useScroll();
 
   useEffect(() => {
@@ -25,6 +26,31 @@ export function Navbar() {
       attributeFilter: ["data-theme"],
     });
 
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = ["home", ...links.map((link) => link.toLowerCase()), "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) {
+          setActiveSection(visibleSection.target.id);
+        }
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0.05, 0.2, 0.5] }
+    );
+
+    sections.forEach((section) => observer.observe(section));
     return () => observer.disconnect();
   }, []);
 
@@ -64,11 +90,25 @@ export function Navbar() {
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
+          <a
+            href="#home"
+            className={`focus-ring rounded-full px-4 py-2 text-sm transition ${
+              activeSection === "home"
+                ? "bg-accent text-black shadow-[0_0_24px_rgb(var(--accent)/0.28)]"
+                : navLinkClass
+            }`}
+          >
+            Home
+          </a>
           {links.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className={`focus-ring rounded-full px-4 py-2 text-sm transition ${navLinkClass}`}
+              className={`focus-ring rounded-full px-4 py-2 text-sm transition ${
+                activeSection === link.toLowerCase()
+                  ? "bg-accent text-black shadow-[0_0_24px_rgb(var(--accent)/0.28)]"
+                  : navLinkClass
+              }`}
             >
               {link}
             </a>
@@ -78,9 +118,11 @@ export function Navbar() {
         <a
           href="#contact"
           className={`focus-ring hidden rounded-full border px-4 py-2 text-sm font-medium shadow-[0_0_30px_rgb(var(--accent)/0.14)] transition md:inline-flex ${
-            isLightTheme
-              ? "border-accent/40 bg-accent/10 text-accent"
-              : "border-accent/35 text-accent hover:bg-accent hover:text-black"
+            activeSection === "contact"
+              ? "border-accent bg-accent text-black"
+              : isLightTheme
+                ? "border-accent/40 bg-accent/10 text-accent"
+                : "border-accent/35 text-accent hover:bg-accent hover:text-black"
           }`}
         >
           Get in touch
@@ -109,11 +151,26 @@ export function Navbar() {
               key={link}
               href={`#${link.toLowerCase()}`}
               onClick={() => setOpen(false)}
-              className={`rounded-2xl px-4 py-3 text-sm transition ${mobileLinkClass}`}
+              className={`rounded-2xl px-4 py-3 text-sm transition ${
+                activeSection === link.toLowerCase()
+                  ? "bg-accent text-black"
+                  : mobileLinkClass
+              }`}
             >
               {link}
             </a>
           ))}
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className={`rounded-2xl px-4 py-3 text-sm transition ${
+              activeSection === "contact"
+                ? "bg-accent text-black"
+                : mobileLinkClass
+            }`}
+          >
+            Get in touch
+          </a>
         </motion.div>
       ) : null}
     </motion.header>
