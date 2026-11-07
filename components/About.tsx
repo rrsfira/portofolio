@@ -1,158 +1,133 @@
 "use client";
 
-import { Code2, Compass, Layers3, Sparkles } from "lucide-react";
+import Image from "next/image";
+import {
+  Code2,
+  GraduationCap,
+  Laptop,
+  MapPin,
+  Trophy,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
-const highlights = [
-  {
-    number: "01",
-    icon: Code2,
-    title: "Web Development",
-    description:
-      "Creating responsive websites with clean layouts and useful functionality.",
-  },
-  {
-    number: "02",
-    icon: Compass,
-    title: "Continuous Learning",
-    description:
-      "Exploring new technologies and improving through hands-on projects.",
-  },
-  {
-    number: "03",
-    icon: Layers3,
-    title: "Creative Thinking",
-    description:
-      "Combining design and technology to create better digital experiences.",
-  },
+const statistics = [
+  { value: "4+", label: "Experience", icon: Code2 },
+  { value: "3.80 / 4.00", label: "GPA", icon: Trophy },
+  { value: "Full Stack", label: "Developer", icon: Laptop },
+  { value: "Surabaya, Indonesia", label: "Location", icon: MapPin },
 ];
 
 export function About() {
   return (
     <section
       id="about"
-      className="section-shell relative overflow-hidden py-16 sm:py-20 lg:py-24"
+      className="relative overflow-hidden py-16 text-white sm:py-20 lg:py-24"
     >
-      <div className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-cyan-500/[0.06] blur-[120px]" />
+      <div
+        className="pointer-events-none absolute -left-24 top-20 h-56 w-56 rounded-full bg-accent/[0.08] blur-2xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute right-[8%] top-12 h-2 w-2 rounded-full bg-accent shadow-[24px_36px_0_rgb(var(--accent)/0.28),52px_4px_0_rgb(var(--accent)/0.16)]"
+        aria-hidden="true"
+      />
 
-      <div className="relative grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-        {/* Introduction */}
+      <div className="section-shell relative grid items-center gap-12 lg:grid-cols-[minmax(280px,0.78fr)_minmax(0,1.35fr)] lg:gap-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: -24 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: "easeOut" }}
+          className="relative mx-auto flex min-h-[360px] w-full max-w-[410px] items-end justify-center sm:min-h-[450px] lg:min-h-[520px]"
         >
-          <div className="mb-6 flex items-center gap-3">
-            <span className="h-px w-8 bg-cyan-400" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-cyan-400">
-              About me
-            </p>
-          </div>
-
-          <h2 className="max-w-xl text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-            A little about{" "}
-            <span className="accent-gradient">who I am.</span>
-          </h2>
-
-          <p className="mt-6 max-w-lg text-sm leading-7 text-white/60 sm:text-base">
-            I am a web developer who enjoys exploring ideas, learning new
-            technologies, and building digital experiences. I believe that
-            every project is an opportunity to develop new skills and
-            create something meaningful.
-          </p>
-
-          <div className="mt-8 flex items-center gap-4 rounded-xl border border-white/[0.09] bg-white/[0.025] p-4 transition-colors hover:border-cyan-400/25">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/[0.08] text-cyan-300">
-              <Sparkles size={20} strokeWidth={1.6} />
-            </div>
-
-            <div>
-              <h3 className="text-sm font-semibold text-white">
-                Open to opportunities
-              </h3>
-              <p className="mt-1 text-xs leading-5 text-white/45 sm:text-sm">
-                Ready to learn, collaborate, and grow.
-              </p>
-            </div>
-
-            <span className="ml-auto h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
-          </div>
-
-          <div className="mt-8 flex items-center gap-3">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-              LEARN
-            </span>
-            <span className="h-px w-6 bg-white/20" />
-            <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-400/70">
-              CREATE
-            </span>
-            <span className="h-px w-6 bg-white/20" />
-            <span className="font-mono text-[10px] tracking-[0.2em] text-white/35">
-              GROW
-            </span>
-          </div>
+          <div
+            className="absolute bottom-4 h-[82%] w-[82%] rounded-full bg-accent/[0.09] sm:h-[86%] sm:w-[86%]"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute bottom-12 right-[7%] h-28 w-28 rounded-full border border-accent/25"
+            aria-hidden="true"
+          />
+          <div
+            className="absolute bottom-[18%] left-[5%] h-3 w-3 rounded-full bg-accent"
+            aria-hidden="true"
+          />
+          <Image
+            src="/Graduation_Bouquet_Portrait_with_Railing-removebg-preview.png"
+            alt="Shafira in her graduation attire"
+            width={410}
+            height={520}
+            priority={false}
+            className="relative z-10 h-auto max-h-[520px] w-full object-contain object-bottom drop-shadow-[0_18px_18px_rgba(0,0,0,0.32)]"
+          />
         </motion.div>
 
-        {/* Highlights */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, delay: 0.1, ease: "easeOut" }}
+          className="min-w-0"
         >
-          <div className="mb-5 border-b border-white/10 pb-4">
-            <p className="text-[10px] uppercase tracking-[0.25em] text-white/35">
-              My approach
+          <div className="mb-3 flex items-center gap-3">
+            <span className="h-px w-8 bg-accent" />
+            <p className="text-xs font-semibold tracking-[0.18em] text-accent">
+              About Me
             </p>
-            <h3 className="mt-2 text-2xl font-semibold text-white sm:text-3xl">
-              What matters to me.
-            </h3>
           </div>
 
-          <div className="space-y-3">
-            {highlights.map((item, index) => {
-              const Icon = item.icon;
+          <h2 className="max-w-2xl text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl">
+            Turning Ideas into Impactful{" "}
+            <span className="text-accent">Solutions</span>
+          </h2>
+
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted sm:text-base">
+            I am a Full Stack Web Developer with experience in developing web-based applications through academic projects and internship programs. I am proficient in developing both frontend and backend components using HTML, CSS, JavaScript, TypeScript, Tailwind CSS, React.js, Next.js, Node.js, Express.js, PHP, Laravel, MySQL, and REST APIs. My expertise includes designing user interfaces, managing databases, integrating APIs, as well as performing testing, debugging, and application deployment. I am passionate about learning new technologies, highly adaptable to different work environments, and experienced in collaborating within teams to apply problem-solving skills in the creation of functional, effective, and user-friendly digital solutions.
+          </p>
+
+          <div className="mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-4 transition-colors hover:border-accent/35 sm:p-5">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-accent/20">
+              <GraduationCap size={24} strokeWidth={1.8} />
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-sm font-bold text-white sm:text-base">
+                Bachelor of Information Systems
+              </h3>
+              <p className="mt-1 text-xs text-white/60 sm:text-sm">
+                UPN &quot;Veteran&quot; Jawa Timur
+              </p>
+              <p className="mt-0.5 text-xs text-white/40">2022 – 2026</p>
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-white/10 pt-6 sm:gap-x-10 sm:gap-y-8">
+            {statistics.map((stat, index) => {
+              const Icon = stat.icon;
 
               return (
                 <motion.div
-                  key={item.number}
-                  initial={{ opacity: 0, x: 12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group rounded-xl border border-white/[0.08] bg-white/[0.025] p-5 transition-all duration-300 hover:border-cyan-400/25 hover:bg-white/[0.045] sm:p-6"
+                  transition={{ duration: 0.4, delay: 0.2 + index * 0.08 }}
+                  className="flex items-start gap-3"
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-[#0c1422] text-cyan-300 transition-colors group-hover:border-cyan-400/30">
-                      <Icon size={20} strokeWidth={1.7} />
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <p className="font-mono text-[10px] tracking-wider text-cyan-400/70">
-                        {item.number}
-                      </p>
-
-                      <h4 className="mt-1 text-base font-semibold text-white transition-colors group-hover:text-cyan-300 sm:text-lg">
-                        {item.title}
-                      </h4>
-
-                      <p className="mt-2 text-xs leading-6 text-white/50 sm:text-sm">
-                        {item.description}
-                      </p>
-                    </div>
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent ring-1 ring-accent/20">
+                    <Icon size={20} strokeWidth={1.8} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="whitespace-nowrap text-lg font-bold leading-tight sm:text-xl">
+                      {stat.value}
+                    </p>
+                    <p className="mt-1 text-xs text-white/50 sm:text-sm">
+                      {stat.label}
+                    </p>
                   </div>
                 </motion.div>
               );
             })}
           </div>
-
-          <p className="mt-5 border-t border-white/[0.08] pt-4 text-xs leading-6 text-white/45 sm:text-sm">
-            <span className="text-white/75">
-              Progress over perfection.
-            </span>{" "}
-            One step at a time.
-          </p>
         </motion.div>
       </div>
     </section>
