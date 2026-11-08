@@ -25,7 +25,7 @@ export function PortfolioShell({ children }: { children: React.ReactNode }) {
         <Link href="/portfolio" className="portfolio-brand" aria-label="Back to portfolio">
           Shafira<span>.</span>
         </Link>
-        <Link href="/portfolio" className="portfolio-nav-back">
+        <Link href="/" className="portfolio-nav-back">
           <ArrowLeft size={14} /> Back
         </Link>
       </header>
