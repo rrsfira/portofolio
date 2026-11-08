@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, X, FileText, ExternalLink } from "lucide-react";
+import { BookOpen, X, ExternalLink } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { GalleryHeading, PortfolioShell } from "@/components/PortfolioShell";
 import { trainingItems } from "@/lib/portfolio-data";
