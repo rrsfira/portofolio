@@ -32,7 +32,7 @@ export const portfolioFolders = [
     label: "Trainings",
     count: "2+",
     accent: "#a6b8ff",
-    documents: ["/Graduation_Bouquet_Portrait_with_Railing-removebg-preview.png", "/Colorful Developer Skills Keyboard.png", "/bnsp.pdf"],
+    documents: ["/Website Development.pdf", "/UI-UX RESEARCH AND DESIGN.pdf", "/afl.pdf"],
   },
 ];
 
