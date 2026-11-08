@@ -467,8 +467,10 @@ body::after {
 .awards-grid { grid-template-columns: repeat(3, 1fr); }
 .training-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; width: min(900px, 100%); padding-bottom: 5rem; }
 .training-tile { display: block; overflow: hidden; min-width: 0; padding: 0; border: 1px solid rgb(207 218 255 / 0.13); border-radius: 1rem; color: white; background: rgb(20 27 44 / 0.7); cursor: pointer; text-align: left; }
-.training-image { display: flex; height: clamp(180px, 22vw, 240px); flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; overflow: hidden; padding: 1rem; background: linear-gradient(145deg, #e9edf7, #cbd4e8); color: #17213a; text-align: center; background-position: center; background-size: cover; }
+.training-image { position: relative; display: flex; height: clamp(180px, 22vw, 240px); flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; overflow: hidden; padding: 1rem; background: linear-gradient(145deg, #e9edf7, #cbd4e8); color: #17213a; text-align: center; background-position: center; background-size: cover; }
 .training-image iframe { width: 100%; height: 100%; border: 0; pointer-events: none; }
+.training-cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; pointer-events: none; }
+.training-preview-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.7rem; padding: 1rem; background: linear-gradient(180deg, transparent 35%, rgb(233 237 247 / 0.92) 100%); }
 .training-image strong { max-width: 100%; overflow: hidden; font-size: 0.72rem; text-overflow: ellipsis; white-space: nowrap; }
 .training-copy { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1rem; }
 .training-copy > svg { flex: 0 0 auto; color: #90adff; }
