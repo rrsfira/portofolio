@@ -399,7 +399,7 @@ body::after {
 .portfolio-nav nav { display: flex; gap: 0.35rem; padding: 0.3rem; border: 1px solid rgb(255 255 255 / 0.1); border-radius: 999px; background: rgb(2 5 15 / 0.5); backdrop-filter: blur(16px); }
 .portfolio-nav nav a { padding: 0.55rem 1rem; border-radius: 999px; color: rgb(236 240 255 / 0.62); font-size: 0.77rem; transition: 180ms ease; }
 .portfolio-nav nav a:hover, .portfolio-nav nav a.active { color: #fff; background: #4775f5; box-shadow: 0 8px 26px rgb(61 105 238 / 0.25); }
-.portfolio-nav-back { display: inline-flex; align-items: center; gap: 0.35rem; color: rgb(236 240 255 / 0.58); font-size: 0.75rem; }
+.portfolio-nav-back { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.5rem 0.75rem; border: 1px solid rgb(255 255 255 / 0.12); border-radius: 999px; color: rgb(236 240 255 / 0.72); background: rgb(2 5 15 / 0.35); font-size: 0.75rem; backdrop-filter: blur(12px); }
 .portfolio-nav-back:hover { color: #fff; }
 .portfolio-content { position: relative; z-index: 1; width: min(1120px, calc(100% - 32px)); min-height: calc(100vh - 92px); margin: 0 auto; }
 
@@ -491,7 +491,7 @@ body::after {
 .project-detail { padding: 2.8rem 0 5rem; }.detail-back { display: inline-flex; align-items: center; gap: 0.4rem; color: rgb(211 222 255 / 0.58); font-size: 0.75rem; }.detail-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: clamp(2rem, 6vw, 6rem); margin-top: 3rem; }.detail-image { overflow: hidden; border: 1px solid rgb(207 218 255 / 0.15); border-radius: 1rem; box-shadow: 0 30px 80px rgb(0 0 0 / 0.35); }.detail-image img { display: block; width: 100%; }.detail-copy h1 { margin: 0.6rem 0 1rem; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 0.95; letter-spacing: -0.07em; }.detail-copy p { color: rgb(224 230 249 / 0.62); font-size: 0.9rem; line-height: 1.8; }
 
 @media (max-width: 760px) {
-  .portfolio-nav nav { gap: 0; }.portfolio-nav nav a { padding: 0.5rem 0.6rem; font-size: 0.68rem; }.portfolio-nav-back { display: none; }
+  .portfolio-nav nav { gap: 0; }.portfolio-nav nav a { padding: 0.5rem 0.6rem; font-size: 0.68rem; }.portfolio-nav-back { padding: 0.45rem 0.65rem; font-size: 0.7rem; }
   .folder-stage { min-height: auto; padding: 4.2rem 0 3rem; }.folders-row { grid-template-columns: 1fr; max-width: 30rem; margin: 0 auto; width: 100%; gap: 3.5rem; }.folder-card { height: 214px; }.folder-intro { margin-bottom: 4.2rem; }.stage-footnote { margin-top: 3.7rem; }
   .project-gallery, .certificate-grid, .awards-grid, .training-grid { grid-template-columns: 1fr; }.project-image-wrap { height: 210px; }.certificate-grid { max-width: 28rem; }.awards-grid, .training-grid { max-width: 30rem; }
   .detail-grid { grid-template-columns: 1fr; margin-top: 2rem; }.detail-copy h1 { font-size: 3rem; }
